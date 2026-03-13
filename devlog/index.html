@@ -147,6 +147,25 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════════ NAV JS ═══ -->
+    <script>
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('nav__links--open');
+            hamburger.classList.toggle('nav__hamburger--open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav__links--open');
+                hamburger.classList.remove('nav__hamburger--open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+
+    <!-- ═══════════════════════════════════════════ PARALLAX JS ═══ -->
     <script>
         document.addEventListener('scroll', () => {
             document.querySelectorAll('.hero__bg').forEach(img => {
@@ -160,37 +179,3 @@
 
 </body>
 </html>
-
-
-
-<!--
-C:\Godot\Ecumenopolis>git log
-commit df56d37aa8ae8856791beacf3fe0098a68bebdb1 (HEAD -> main, origin/main)
-Author: Taylor Heine <taylorheine09@gmail.com>
-Date:   Sat Feb 21 02:27:10 2026 -0400
-
-    Fixed typo
-
-commit 62fcdb13e7ceac16a2d53ecf3ff4943b3885333c
-Author: Taylor Heine <taylorheine09@gmail.com>
-Date:   Sat Feb 21 02:23:42 2026 -0400
-
-    Web update
-
-commit 90ab475d04527c5bde59b0adc79bae3ddf232117
-Author: Taylor Heine <taylorheine09@gmail.com>
-Date:   Sat Feb 21 00:00:44 2026 -0400
-
-    Updated dev log
-
-commit dad411236f1814f618ac238cf9430c7158975820
-Author: Taylor Heine <taylorheine09@gmail.com>
-Date:   Fri Feb 20 07:41:45 2026 -0400
-
-    Added dev log
-
-commit 8a554fc847717190b2ea50b80401d6282f691673
-Author: Taylor Heine <taylorheine09@gmail.com>
-Date:   Fri Feb 20 07:06:54 2026 -0400
-
-    Initial commit - VoxelChunk proof of concept working
