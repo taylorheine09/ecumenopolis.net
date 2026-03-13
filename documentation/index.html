@@ -11,16 +11,22 @@
 </head>
 <body>
 
-    <!-- ═══════════════════════════════════════════ NAV ═══ -->
+        <!-- ═══════════════════════════════════════════ NAV ═══ -->
     <nav class="nav">
         <div class="nav__logo">
-            <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img">
+            <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full">
+            <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon">
         </div>
-        <ul class="nav__links">
-            <li><a href="/" class="nav__link">HOME</a></li>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="/" class="nav__link nav__link--active">HOME</a></li>
             <li><a href="/devlog/" class="nav__link">DEVLOG</a></li>
-            <li><a href="/documentation/" class="nav__link nav__link--active">DOCUMENTATION</a></li>
+            <li><a href="/documentation/" class="nav__link">DOCUMENTATION</a></li>
         </ul>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- ═══════════════════════════════════════════ PAGE HEADER ═══ -->
