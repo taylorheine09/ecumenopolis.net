@@ -193,6 +193,24 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════════ NAV JS ═══ -->
+    <script>
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('nav__links--open');
+            hamburger.classList.toggle('nav__hamburger--open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav__links--open');
+                hamburger.classList.remove('nav__hamburger--open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+
     <!-- ═══════════════════════════════════════════ JS ═══ -->
     <script>
     // ── Category collapse/expand
