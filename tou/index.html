@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECUMENOPOLIS — Terms of Use</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.ecumenopolis.net/css/main.css">
+
+    <style>
+        /* ── TERMINAL CONTAINER ─────────────────────────────────── */
+        .tou {
+            background: var(--col-bg);
+            padding: 4rem 2rem 6rem;
+        }
+        .tou__container {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* ── TERMINAL WINDOW ────────────────────────────────────── */
+        .terminal {
+            background: rgba(1, 1, 41, 0.95);
+            border: 1px solid rgba(129, 231, 212, 0.3);
+            box-shadow: 0 0 40px rgba(129, 231, 212, 0.05), inset 0 0 60px rgba(1,1,41,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* scanline overlay */
+        .terminal::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 3px,
+                rgba(0,0,0,0.08) 3px,
+                rgba(0,0,0,0.08) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ── TERMINAL TITLEBAR ──────────────────────────────────── */
+        .terminal__bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: var(--col-surface);
+            border-bottom: 1px solid rgba(129, 231, 212, 0.2);
+        }
+        .terminal__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .terminal__dot--red   { background: var(--col-burn-red); box-shadow: 0 0 6px var(--col-burn-red); }
+        .terminal__dot--yellow { background: var(--col-yellow); box-shadow: 0 0 6px var(--col-yellow); opacity: 0.6; }
+        .terminal__dot--teal  { background: var(--col-teal); box-shadow: 0 0 6px var(--col-teal); opacity: 0.5; }
+        .terminal__title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: rgba(129, 231, 212, 0.5);
+            margin-left: 0.5rem;
+        }
+
+        /* ── TERMINAL BODY ──────────────────────────────────────── */
+        .terminal__body {
+            padding: 2rem 2.5rem 3rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* ── TERMINAL HEADER ────────────────────────────────────── */
+        .terminal__header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(129, 231, 212, 0.15);
+        }
+        .terminal__prompt {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--col-teal);
+            opacity: 0.7;
+        }
+        .terminal__doc-title {
+            font-family: var(--font-mono);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--col-off-white);
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(129, 231, 212, 0.3);
+        }
+        .terminal__meta {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: rgba(240, 255, 244, 0.3);
+        }
+        .terminal__meta span {
+            color: var(--col-hot-pink);
+            margin: 0 0.5rem;
+        }
+
+        /* ── SECTION ────────────────────────────────────────────── */
+        .tou-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .tou-section__label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            color: var(--col-teal);
+        }
+        .tou-section__title {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--col-burn-red);
+        }
+        .tou-section__divider {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--col-hot-pink), transparent);
+        }
+        .tou-section__body {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.9;
+            color: var(--col-pale-blue);
+            max-width: 680px;
+        }
+        .tou-section__body em {
+            color: var(--col-off-white);
+            font-style: normal;
+        }
+
+        /* ── LIST ITEMS ─────────────────────────────────────────── */
+        .tou-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding-left: 0;
+        }
+        .tou-list li {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--col-pale-blue);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .tou-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--col-hot-pink);
+        }
+
+        /* ── HIGHLIGHT LINE ─────────────────────────────────────── */
+        .tou-highlight {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            color: var(--col-teal);
+            padding: 0.6rem 1rem;
+            border-left: 2px solid var(--col-teal);
+            background: rgba(129, 231, 212, 0.04);
+        }
+
+        /* ── END OF DOCUMENT ────────────────────────────────────── */
+        .terminal__footer {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(129, 231, 212, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .terminal__footer-line {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: rgba(240, 255, 244, 0.25);
+        }
+        .terminal__footer-line--active {
+            color: var(--col-teal);
+            opacity: 0.7;
+        }
+
+        /* ── CURSOR BLINK ───────────────────────────────────────── */
+        .terminal__cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background: var(--col-teal);
+            vertical-align: text-bottom;
+            animation: blink 1.1s step-end infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .tou { padding: 2rem 1rem 4rem; }
+            .terminal__body { padding: 1.25rem 1.25rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ NAV ═══ -->
+    <nav class="nav">
+        <div class="nav__logo">
+            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full"></a>
+            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon"></a>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="/" class="nav__link">HOME</a></li>
+            <li><a href="/devlog/" class="nav__link">DEVLOG</a></li>
+            <li><a href="/documentation/" class="nav__link">DOCUMENTATION</a></li>
+        </ul>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════ PAGE HEADER ═══ -->
+    <header class="page-header">
+        <div class="page-header__inner">
+            <p class="page-header__label">// LEGAL</p>
+            <h1 class="page-header__title">TERMS OF USE</h1>
+            <div class="page-header__divider"></div>
+            <p class="page-header__sub">Access protocol and intellectual property terms for ecumenopolis.net</p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════ TERMINAL ═══ -->
+    <section class="tou">
+        <div class="tou__container">
+            <div class="terminal">
+
+                <div class="terminal__bar">
+                    <div class="terminal__dot terminal__dot--red"></div>
+                    <span class="terminal__title">SYSTEM_TERMS — ACCESS_PROTOCOL.doc</span>
+                </div>
+
+                <div class="terminal__body">
+
+                    <!-- HEADER -->
+                    <div class="terminal__header">
+                        <p class="terminal__prompt">> loading document... access granted</p>
+                        <h2 class="terminal__doc-title">SYSTEM TERMS — ACCESS PROTOCOL</h2>
+                        <p class="terminal__meta">
+                            Node: ecumenopolis.net
+                            <span>|</span>
+                            Operator: The Ecumenopolis Project
+                            <span>|</span>
+                            Class: Public
+                            <span>|</span>
+                            Status: Active
+                            <span>|</span>
+                            Version: 0.0.1
+                        </p>
+                    </div>
+
+                    <!-- SECTION 01 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_01</p>
+                        <h3 class="tou-section__title">Jurisdiction & Operator</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">This node is operated by <em>The Ecumenopolis Project</em>, located in Nova Scotia, Canada. By accessing this node, you acknowledge and agree to the terms outlined in this document. These terms apply to all users, visitors, and entities that access or interact with this site in any capacity.</p>
+                        <div class="tou-highlight">If you do not agree to these terms, disconnect now.</div>
+                    </div>
+
+                    <!-- SECTION 02 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_02</p>
+                        <h3 class="tou-section__title">Intellectual Property</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">All content transmitted through this node — including but not limited to visual assets, written material, source code, brand identity, game concepts, worldbuilding documents, character designs, and all associated media — is the exclusive property of <em>The Ecumenopolis Project</em>. All rights reserved.</p>
+                        <p class="tou-section__body">Unauthorized reproduction, distribution, modification, or use of any content found on this node, in whole or in part, is strictly prohibited without prior written authorization from The Ecumenopolis Project.</p>
+                    </div>
+
+                    <!-- SECTION 03 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_03</p>
+                        <h3 class="tou-section__title">Permitted Use</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">Access to this node is granted for personal, non-commercial viewing only. You may not:</p>
+                        <ul class="tou-list">
+                            <li>Reproduce or copy any content for commercial use</li>
+                            <li>Redistribute or republish any content without written permission</li>
+                            <li>Use any content for training artificial intelligence systems</li>
+                            <li>Claim ownership of any content originating from this node</li>
+                            <li>Reverse engineer, scrape, or systematically extract data from this site</li>
+                        </ul>
+                        <p class="tou-section__body">Violation of these terms will result in legal action under applicable Canadian law.</p>
+                    </div>
+
+                    <!-- SECTION 04 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_04</p>
+                        <h3 class="tou-section__title">Data Collection</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">This node collects no personal data. There are no user accounts, no contact forms, no cookies, no tracking pixels, and no analytics systems in operation. 
+                        <div class="tou-highlight">No tracking. No surveillance. Traffic data is collected by GitHub as the hosting provider, not by us.</div>
+                    </div>
+
+                    <!-- SECTION 05 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_05</p>
+                        <h3 class="tou-section__title">External Links</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">This node may contain links to external platforms including but not limited to Instagram and YouTube. These platforms operate under their own terms and privacy policies. The Ecumenopolis Project assumes no responsibility for the content or practices of any external node.</p>
+                    </div>
+
+                    <!-- SECTION 06 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_06</p>
+                        <h3 class="tou-section__title">Development Disclaimer</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">All game details, features, mechanics, timelines, and media presented on this node are subject to change without notice. This is a living project. What you see today is not necessarily what releases tomorrow.</p>
+                        <p class="tou-section__body">The Ecumenopolis Project makes no guarantees regarding release dates, feature completeness, or final product specifications.</p>
+                    </div>
+
+                    <!-- SECTION 07 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_07</p>
+                        <h3 class="tou-section__title">Disclaimer of Warranties</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">This node is provided as-is. The Ecumenopolis Project makes no warranties, express or implied, regarding the accuracy, reliability, or availability of this site or its contents. Access may be interrupted, modified, or terminated at any time without notice.</p>
+                    </div>
+
+                    <!-- SECTION 08 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_08</p>
+                        <h3 class="tou-section__title">Amendments</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">These terms may be updated at any time. Continued access to this node following any update constitutes acceptance of the revised terms. Version history is not publicly maintained.</p>
+                    </div>
+
+                    <!-- SECTION 09 -->
+                    <div class="tou-section">
+                        <p class="tou-section__label">// SECTION_09</p>
+                        <h3 class="tou-section__title">Contact</h3>
+                        <div class="tou-section__divider"></div>
+                        <p class="tou-section__body">For inquiries regarding these terms or intellectual property concerns, direct your transmission to:</p>
+                        <div class="tou-highlight">[ contact information currently unavailable ]</div>
+                    </div>
+
+                    <!-- END OF DOCUMENT -->
+                    <div class="terminal__footer">
+                        <p class="terminal__footer-line">// END OF DOCUMENT</p>
+                        <p class="terminal__footer-line">The Ecumenopolis Project — Nova Scotia, Canada</p>
+                        <p class="terminal__footer-line terminal__footer-line--active">All systems active. <span class="terminal__cursor"></span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- ═══════════════════════════════════════════ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <p class="footer__title">ECUMENOPOLIS</p>
+            <p class="footer__copy">© 2025 — ALL SYSTEMS ACTIVE</p>
+            <nav class="footer__nav">
+                <a href="/">HOME</a>
+                <span>|</span>
+                <a href="/devlog/">DEVLOG</a>
+                <span>|</span>
+                <a href="'documentation/">DOCS</a>
+                <span>|</span>
+                <a href="/tou/">ToU</a>
+                <span></span>
+                <span>|</span>
+                <span></span>
+                <a href="https://www.instagram.com/ecumenopolis.game/">INSTAGRAM</a>
+                <span>|</span>
+                <a href="https://www.youtube.com/@ecumenopolis_game">YOUTUBE</a>
+                <span>|</span>
+                <a href="https://x.com/EcumenopolisNet">X</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════ NAV JS ═══ -->
+    <script>
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('nav__links--open');
+            hamburger.classList.toggle('nav__hamburger--open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav__links--open');
+                hamburger.classList.remove('nav__hamburger--open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+
+</body>
+</html>
