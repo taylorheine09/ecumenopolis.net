@@ -497,6 +497,12 @@ body {
     }
 }
 
+.footer__nav-sep--desktop { display: inline; }
+
+@media (max-width: 640px) {
+    .footer__nav-sep--desktop { display: none; }
+}
+
 /* ── PAGE HEADER ───────────────────────────────────────────── */
 .page-header {
     padding: 9rem 2rem 4rem;
