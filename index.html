@@ -14,8 +14,16 @@
     <!-- ═══════════════════════════════════════════ NAV ═══ -->
     <nav class="nav">
         <div class="nav__logo">
-            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full"></a>
-            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon"></a>
+            <a href="/"><span class="glitch-wrap nav-glitch" id="nav-glitch-full">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full glitch-img">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="" class="nav__logo-img nav__logo-img--full glitch-img glitch-img--r" aria-hidden="true">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="" class="nav__logo-img nav__logo-img--full glitch-img glitch-img--b" aria-hidden="true">
+            </span></a>
+            <a href="/"><span class="glitch-wrap nav-glitch" id="nav-glitch-icon">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon glitch-img">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="" class="nav__logo-img nav__logo-img--icon glitch-img glitch-img--r" aria-hidden="true">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="" class="nav__logo-img nav__logo-img--icon glitch-img glitch-img--b" aria-hidden="true">
+            </span></a>
         </div>
         <ul class="nav__links" id="nav-links">
             <li><a href="/" class="nav__link nav__link--active">HOME</a></li>
@@ -37,7 +45,11 @@
             <div class="hero__scan-line"></div>
             <p class="hero__pre-label">[ ACTIVE PROJECT — BUILD 0.0.1 ]</p>
             <h1 class="hero__title">
-                <img src="brand/ecumenopolis_logo_white_v2.svg" alt="ECUMENOPOLIS" class="hero__title-logo">
+                <span class="glitch-wrap">
+                    <img src="brand/ecumenopolis_logo_white_v2.svg" alt="ECUMENOPOLIS" class="hero__title-logo glitch-img">
+                    <img src="brand/ecumenopolis_logo_white_v2.svg" alt="" class="hero__title-logo glitch-img glitch-img--r" aria-hidden="true">
+                    <img src="brand/ecumenopolis_logo_white_v2.svg" alt="" class="hero__title-logo glitch-img glitch-img--b" aria-hidden="true">
+                </span>
             </h1>
             <p class="hero__sub">ONE PLANET. ONE CITY. <span style="white-space: nowrap;">8192 LEVELS.</span></p>
             <div class="hero__corner hero__corner--tl"></div>
@@ -50,10 +62,20 @@
 
     <!-- ═══════════════════════════════════════════ ABOUT ═══ -->
     <section class="about">
+        <canvas class="about__pcb" id="pcb-canvas" aria-hidden="true"></canvas>
         <div class="about__container">
             <div class="about__label">// SECTION_01</div>
             <h2 class="about__heading">About The Game</h2>
             <div class="about__divider"></div>
+            <p class="about__body">
+                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
+            </p>
+            <p class="about__body">
+                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
+            </p>
+            <p class="about__body">
+                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
+            </p>
             <p class="about__body">
                 "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
             </p>
@@ -81,7 +103,9 @@
             <!-- MILESTONE 1 -->
             <div class="milestone milestone--right milestone--active">
                 <div>
-                    <div class="milestone__circle milestone__circle--active">1</div>
+                    <div class="milestone__circle milestone__circle--active" id="milestone-circle">
+                        <span id="milestone-number">1</span>
+                    </div>
                 </div>
                 <div class="milestone__content milestone__content--right">
                     <h2 class="milestone__name">ACTIVE EXAMPLE</h2>
@@ -201,6 +225,452 @@
                 img.style.transform = `translateY(${offset}px)`;
             });
         });
+    </script>
+
+    <!-- ═══════════════════════════════════════════ GLITCH CSS ═══ -->
+    <style>
+        .glitch-wrap {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-img { display: block; }
+
+        /* Nav glitch span visibility — mirrors the image show/hide rules */
+        #nav-glitch-full { display: inline-block; }
+        #nav-glitch-icon { display: none; }
+
+        @media (max-width: 640px) {
+            #nav-glitch-full { display: none; }
+            #nav-glitch-icon { display: inline-block; }
+        }
+
+        .glitch-img--r {
+            position: absolute;
+            top: 0; left: 0;
+            mix-blend-mode: screen;
+            opacity: 0;
+            filter:
+                brightness(0) saturate(100%)
+                invert(30%) sepia(90%) saturate(700%)
+                hue-rotate(320deg) brightness(120%)
+                drop-shadow(0 0 20px rgba(129, 231, 212, 0.6));
+            pointer-events: none;
+        }
+        .glitch-img--b {
+            position: absolute;
+            top: 0; left: 0;
+            mix-blend-mode: screen;
+            opacity: 0;
+            filter:
+                brightness(0) saturate(100%)
+                invert(60%) sepia(80%) saturate(500%)
+                hue-rotate(180deg) brightness(130%)
+                drop-shadow(0 0 20px rgba(129, 231, 212, 0.6));
+            pointer-events: none;
+        }
+
+        @keyframes glitch-main-p1 {
+            0%   { transform: translate(0); clip-path: none; opacity: 1; }
+            10%  { transform: translate(-6px, 2px) skewX(-4deg); clip-path: polygon(0 10%, 100% 10%, 100% 38%, 0 38%); opacity: 0.85; }
+            20%  { transform: translate(6px, -3px) skewX(3deg); clip-path: polygon(0 55%, 100% 55%, 100% 78%, 0 78%); }
+            30%  { transform: translate(-4px, 1px); clip-path: polygon(0 0%, 100% 0%, 100% 20%, 0 20%); opacity: 0.9; }
+            40%  { transform: translate(5px, -1px) skewX(-2deg); clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); }
+            50%  { transform: translate(0); clip-path: none; opacity: 1; }
+            60%  { transform: translate(-3px, 2px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); opacity: 0.8; }
+            80%  { transform: translate(0); clip-path: none; opacity: 1; }
+            100% { transform: translate(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes glitch-r-p1 {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(10px, -3px); opacity: 0.7; }
+            20%  { transform: translate(-8px, 2px); opacity: 0.5; }
+            30%  { transform: translate(7px, -1px); opacity: 0.6; }
+            50%  { transform: translate(0); opacity: 0; }
+            60%  { transform: translate(9px, 2px); opacity: 0.55; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes glitch-b-p1 {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(-9px, 3px); opacity: 0.6; }
+            20%  { transform: translate(7px, -2px); opacity: 0.45; }
+            30%  { transform: translate(-6px, 1px); opacity: 0.55; }
+            50%  { transform: translate(0); opacity: 0; }
+            60%  { transform: translate(-8px, -2px); opacity: 0.5; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes glitch-main-p2 {
+            0%   { transform: translate(0) skewX(0); clip-path: none; opacity: 1; }
+            8%   { transform: translate(-12px, 0) skewX(-12deg); clip-path: polygon(0 0%, 100% 0%, 100% 30%, 0 30%); opacity: 0.7; }
+            16%  { transform: translate(14px, 0) skewX(10deg); clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%); opacity: 0.8; }
+            24%  { transform: translate(-10px, 0) skewX(-8deg); clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); opacity: 0.75; }
+            35%  { transform: translate(8px, 0) skewX(6deg); clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%); opacity: 0.85; }
+            50%  { transform: translate(-5px, 0) skewX(-4deg); clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%); }
+            65%  { transform: translate(4px, 0) skewX(3deg); clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%); opacity: 0.9; }
+            80%  { transform: translate(-2px, 0) skewX(-1deg); clip-path: none; opacity: 0.95; }
+            100% { transform: translate(0) skewX(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes glitch-r-p2 {
+            0%   { opacity: 0; transform: translate(0); }
+            8%   { transform: translate(18px, -2px) skewX(-10deg); opacity: 0.8; }
+            24%  { transform: translate(-14px, 1px) skewX(8deg); opacity: 0.65; }
+            50%  { transform: translate(12px, 0) skewX(-6deg); opacity: 0.7; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes glitch-b-p2 {
+            0%   { opacity: 0; transform: translate(0); }
+            8%   { transform: translate(-16px, 2px) skewX(10deg); opacity: 0.7; }
+            24%  { transform: translate(12px, -1px) skewX(-8deg); opacity: 0.6; }
+            50%  { transform: translate(-10px, 0) skewX(5deg); opacity: 0.65; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .glitch-wrap.glitching-p1 .glitch-img    { animation: glitch-main-p1 0.45s steps(1) forwards; }
+        .glitch-wrap.glitching-p1 .glitch-img--r  { animation: glitch-r-p1 0.45s steps(1) forwards; }
+        .glitch-wrap.glitching-p1 .glitch-img--b  { animation: glitch-b-p1 0.45s steps(1) forwards; }
+
+        .glitch-wrap.glitching-p2 .glitch-img    { animation: glitch-main-p2 0.5s steps(1) forwards; }
+        .glitch-wrap.glitching-p2 .glitch-img--r  { animation: glitch-r-p2 0.5s steps(1) forwards; }
+        .glitch-wrap.glitching-p2 .glitch-img--b  { animation: glitch-b-p2 0.5s steps(1) forwards; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ GLITCH JS ═══ -->
+    <script>
+        (function() {
+            // Hero logo glitch
+            const wrap = document.querySelector('#nav-glitch-full') ? document.querySelector('.hero__title .glitch-wrap') : document.querySelector('.glitch-wrap');
+            let glitchCount = 0;
+
+            function triggerGlitch() {
+                glitchCount++;
+                const doShear = (glitchCount % 3 === 0);
+
+                wrap.classList.add('glitching-p1');
+                setTimeout(() => {
+                    wrap.classList.remove('glitching-p1');
+                    if (doShear) {
+                        setTimeout(() => {
+                            wrap.classList.add('glitching-p2');
+                            setTimeout(() => {
+                                wrap.classList.remove('glitching-p2');
+                            }, 550);
+                        }, 200);
+                    }
+                }, 450);
+
+                const next = 4000 + Math.random() * 6000;
+                setTimeout(triggerGlitch, next);
+            }
+
+            const initial = 4000 + Math.random() * 6000;
+            setTimeout(triggerGlitch, initial);
+
+            // Nav logo glitch — full and icon share the same timer, only one is visible at a time
+            function triggerNavGlitch() {
+                const navFull = document.getElementById('nav-glitch-full');
+                const navIcon = document.getElementById('nav-glitch-icon');
+
+                [navFull, navIcon].forEach(el => {
+                    el.classList.add('glitching-p1');
+                    setTimeout(() => el.classList.remove('glitching-p1'), 450);
+                });
+
+                const next = 2000 + Math.random() * 8000;
+                setTimeout(triggerNavGlitch, next);
+            }
+
+            setTimeout(triggerNavGlitch, 2000 + Math.random() * 8000);
+        })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════ PCB CSS ═══ -->
+    <style>
+        .about { position: relative; }
+        .about__pcb {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .about__container { position: relative; z-index: 1; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ PCB JS ═══ -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('pcb-canvas');
+        const section = canvas.parentElement;
+
+        function resize() {
+            canvas.width = section.offsetWidth;
+            canvas.height = section.offsetHeight;
+            build();
+        }
+
+        const ctx = canvas.getContext('2d');
+        const GRID = 18;
+        const PAD_R = 1.5;
+        const BASE_COLOR = [30, 45, 78];
+        const GLOW_COLOR = [129, 231, 212];
+        const PULSE_DURATION = 12000;
+        const PULSE_OFFSET = 6000; // second pulse starts halfway through
+
+        let segments = [];
+        let pads = [];
+        let cpuPins = [];
+        let cpu = {};
+
+        function build() {
+            segments = [];
+            pads = [];
+            cpuPins = [];
+            const W = canvas.width;
+            const H = canvas.height;
+            const cx = W / 2;
+            const cy = H / 2;
+
+            // CPU block dimensions
+            const cpuW = 52;
+            const cpuH = 44;
+            const cpuX = cx - cpuW / 2;
+            const cpuY = cy - cpuH / 2;
+            cpu = { x: cpuX, y: cpuY, w: cpuW, h: cpuH, cx, cy };
+
+            // CPU pin stubs
+            const pinCount = 4;
+            const pinLen = 6;
+            const pinSpacingH = cpuW / (pinCount + 1);
+            const pinSpacingV = cpuH / (pinCount + 1);
+            for (let i = 1; i <= pinCount; i++) {
+                // top pins
+                cpuPins.push({ x1: cpuX + i * pinSpacingH, y1: cpuY - pinLen, x2: cpuX + i * pinSpacingH, y2: cpuY });
+                // bottom pins
+                cpuPins.push({ x1: cpuX + i * pinSpacingH, y1: cpuY + cpuH, x2: cpuX + i * pinSpacingH, y2: cpuY + cpuH + pinLen });
+                // left pins
+                cpuPins.push({ x1: cpuX - pinLen, y1: cpuY + i * pinSpacingV, x2: cpuX, y2: cpuY + i * pinSpacingV });
+                // right pins
+                cpuPins.push({ x1: cpuX + cpuW, y1: cpuY + i * pinSpacingV, x2: cpuX + cpuW + pinLen, y2: cpuY + i * pinSpacingV });
+            }
+
+            const maxDist = Math.sqrt(cx * cx + cy * cy);
+
+            const cols = Math.ceil(W / GRID) + 2;
+            const rows = Math.ceil(H / GRID) + 2;
+            const offsetX = (W - (cols - 1) * GRID) / 2;
+            const offsetY = (H - (rows - 1) * GRID) / 2;
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const x = offsetX + c * GRID;
+                    const y = offsetY + r * GRID;
+
+                    // Skip nodes inside the CPU block
+                    if (x > cpuX - GRID && x < cpuX + cpuW + GRID && y > cpuY - GRID && y < cpuY + cpuH + GRID) continue;
+
+                    const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+                    const norm = dist / maxDist;
+
+                    if (Math.random() < 0.35) pads.push({ x, y, norm });
+
+                    if (c < cols - 1 && Math.random() < 0.7) {
+                        const x2 = offsetX + (c + 1) * GRID;
+                        const mx = (x + x2) / 2;
+                        const segDist = Math.sqrt((mx - cx) ** 2 + (y - cy) ** 2);
+                        segments.push({ x1: x, y1: y, x2, y2: y, norm: segDist / maxDist });
+                    }
+                    if (r < rows - 1 && Math.random() < 0.7) {
+                        const y2 = offsetY + (r + 1) * GRID;
+                        const my = (y + y2) / 2;
+                        const segDist = Math.sqrt((x - cx) ** 2 + (my - cy) ** 2);
+                        segments.push({ x1: x, y1: y, x2: x, y2, norm: segDist / maxDist });
+                    }
+                    if (c < cols - 1 && r < rows - 1 && Math.random() < 0.15) {
+                        const x2 = offsetX + (c + 1) * GRID;
+                        const y2 = offsetY + (r + 1) * GRID;
+                        const segDist = Math.sqrt((x2 - cx) ** 2 + (y - cy) ** 2);
+                        segments.push({ x1: x2, y1: y, x2, y2, norm: segDist / maxDist });
+                    }
+                }
+            }
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+
+        const BAND = 0.2;
+        const start = performance.now();
+
+        function pulseIntensity(norm, progress) {
+            const delta = progress - norm;
+            if (delta < 0 || delta > BAND) return 0;
+            return Math.sin((delta / BAND) * Math.PI);
+        }
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function colorAt(intensity) {
+            const r = Math.round(lerp(BASE_COLOR[0], GLOW_COLOR[0], intensity * 0.13));
+            const g = Math.round(lerp(BASE_COLOR[1], GLOW_COLOR[1], intensity * 0.13));
+            const b = Math.round(lerp(BASE_COLOR[2], GLOW_COLOR[2], intensity * 0.13));
+            const a = lerp(0.35, 0.9, intensity * 0.15);
+            return `rgba(${r},${g},${b},${a})`;
+        }
+
+        function draw(now) {
+            const W = canvas.width;
+            const H = canvas.height;
+            ctx.clearRect(0, 0, W, H);
+
+            const elapsed = now - start;
+            const p1 = (elapsed % PULSE_DURATION) / PULSE_DURATION;
+            const p2 = ((elapsed + PULSE_OFFSET) % PULSE_DURATION) / PULSE_DURATION;
+
+            function bestIntensity(norm) {
+                return Math.max(pulseIntensity(norm, p1), pulseIntensity(norm, p2));
+            }
+
+            // Draw segments
+            for (const s of segments) {
+                const intensity = bestIntensity(s.norm);
+                ctx.strokeStyle = colorAt(intensity);
+                ctx.lineWidth = intensity > 0.05 ? 1.2 : 0.8;
+                ctx.beginPath();
+                ctx.moveTo(s.x1, s.y1);
+                ctx.lineTo(s.x2, s.y2);
+                ctx.stroke();
+            }
+
+            // Draw pads
+            for (const p of pads) {
+                const intensity = bestIntensity(p.norm);
+                ctx.fillStyle = colorAt(intensity);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, PAD_R, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // CPU intensity — peaks at pulse origin (norm=0)
+            const cpuIntensity = Math.max(pulseIntensity(0, p1), pulseIntensity(0, p2));
+            const cpuAlpha = lerp(0.05, 0.14, cpuIntensity);
+            const cpuStroke = `rgba(${Math.round(lerp(BASE_COLOR[0], GLOW_COLOR[0], cpuIntensity * 0.16))},${Math.round(lerp(BASE_COLOR[1], GLOW_COLOR[1], cpuIntensity * 0.16))},${Math.round(lerp(BASE_COLOR[2], GLOW_COLOR[2], cpuIntensity * 0.16))},${cpuAlpha})`;
+
+            ctx.strokeStyle = cpuStroke;
+            ctx.lineWidth = 1;
+
+            // Outer CPU box
+            ctx.strokeRect(cpu.x, cpu.y, cpu.w, cpu.h);
+
+            // Inner CPU box (inset 5px)
+            const inset = 5;
+            ctx.strokeRect(cpu.x + inset, cpu.y + inset, cpu.w - inset * 2, cpu.h - inset * 2);
+
+            // Inner grid lines
+            ctx.beginPath();
+            ctx.moveTo(cpu.cx, cpu.y + inset);
+            ctx.lineTo(cpu.cx, cpu.y + cpu.h - inset);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cpu.x + inset, cpu.cy);
+            ctx.lineTo(cpu.x + cpu.w - inset, cpu.cy);
+            ctx.stroke();
+
+            // CPU pin stubs
+            for (const pin of cpuPins) {
+                ctx.beginPath();
+                ctx.moveTo(pin.x1, pin.y1);
+                ctx.lineTo(pin.x2, pin.y2);
+                ctx.stroke();
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        requestAnimationFrame(draw);
+    })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════ MILESTONE GLITCH CSS ═══ -->
+    <style>
+        #milestone-circle {
+            position: relative;
+            overflow: visible;
+        }
+
+        @keyframes num-glitch {
+            0%   { transform: translate(0) skewX(0); opacity: 1; }
+            10%  { transform: translate(-3px, 1px) skewX(-6deg); opacity: 0.7; }
+            20%  { transform: translate(3px, -1px) skewX(4deg); opacity: 0.85; }
+            35%  { transform: translate(-2px, 0) skewX(-3deg); opacity: 0.6; }
+            50%  { transform: translate(2px, 1px); opacity: 0.9; }
+            65%  { transform: translate(0) skewX(0); opacity: 1; }
+            100% { transform: translate(0) skewX(0); opacity: 1; }
+        }
+
+        /* Circle p1 — with horizontal shear slices via clip-path */
+        @keyframes circle-glitch-p1 {
+            0%   { transform: translate(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); }
+            10%  { transform: translate(-2px, 0) skewX(-3deg); clip-path: polygon(0 0%, 100% 0%, 100% 35%, 0 35%); box-shadow: 3px 0 0 rgba(235,68,111,0.4), -3px 0 0 rgba(129,231,212,0.3); }
+            20%  { transform: translate(2px, 0) skewX(2deg); clip-path: polygon(0 35%, 100% 35%, 100% 70%, 0 70%); box-shadow: -3px 0 0 rgba(235,68,111,0.35), 3px 0 0 rgba(129,231,212,0.25); }
+            30%  { transform: translate(-1px, 0) skewX(-2deg); clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); box-shadow: 2px 0 0 rgba(235,68,111,0.3); }
+            40%  { transform: translate(1px, 0) skewX(1deg); clip-path: polygon(0 20%, 100% 20%, 100% 55%, 0 55%); box-shadow: -2px 0 0 rgba(129,231,212,0.25); }
+            55%  { transform: translate(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); }
+            100% { transform: translate(0) skewX(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); }
+        }
+
+        /* Circle major — 3 hard shear pulses */
+        @keyframes circle-glitch-major {
+            0%   { transform: translate(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); opacity: 1; }
+            6%   { transform: translate(-8px, 0) skewX(-12deg); clip-path: polygon(0 0%, 100% 0%, 100% 33%, 0 33%); box-shadow: 12px 0 0 rgba(235,68,111,0.9), -12px 0 0 rgba(129,231,212,0.8); opacity: 0.6; }
+            12%  { transform: translate(0); clip-path: none; box-shadow: 0 0 35px var(--col-hot-pink); opacity: 1; }
+            18%  { transform: translate(8px, 0) skewX(10deg); clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%); box-shadow: -12px 0 0 rgba(235,68,111,0.9), 12px 0 0 rgba(129,231,212,0.8); opacity: 0.65; }
+            24%  { transform: translate(0); clip-path: none; box-shadow: 0 0 35px var(--col-hot-pink); opacity: 1; }
+            30%  { transform: translate(-6px, 0) skewX(-8deg); clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%); box-shadow: 10px 0 0 rgba(235,68,111,0.85), -10px 0 0 rgba(129,231,212,0.7); opacity: 0.7; }
+            38%  { transform: translate(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); opacity: 1; }
+            100% { transform: translate(0) skewX(0); clip-path: none; box-shadow: 0 0 20px var(--col-burn-red); opacity: 1; }
+        }
+
+        #milestone-circle.glitch-p1    { animation: circle-glitch-p1 0.45s steps(1) forwards; }
+        #milestone-circle.glitch-major { animation: circle-glitch-major 0.65s steps(1) forwards; }
+        #milestone-number.glitch       { animation: num-glitch 0.4s steps(1) forwards; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ MILESTONE GLITCH JS ═══ -->
+    <script>
+    (function() {
+        const circle = document.getElementById('milestone-circle');
+        const number = document.getElementById('milestone-number');
+        let circleCount = 0;
+
+        function triggerCircleGlitch() {
+            circleCount++;
+            const isMajor = (circleCount % 5 === 0);
+            const cls = isMajor ? 'glitch-major' : 'glitch-p1';
+            const duration = isMajor ? 700 : 480;
+
+            circle.classList.add(cls);
+            setTimeout(() => circle.classList.remove(cls), duration);
+
+            const next = 1000 + Math.random() * 7000;
+            setTimeout(triggerCircleGlitch, next);
+        }
+
+        function triggerNumberGlitch() {
+            number.classList.add('glitch');
+            setTimeout(() => number.classList.remove('glitch'), 420);
+
+            const next = 2000 + Math.random() * 10000;
+            setTimeout(triggerNumberGlitch, next);
+        }
+
+        setTimeout(triggerCircleGlitch, 1000 + Math.random() * 7000);
+        setTimeout(triggerNumberGlitch, 2000 + Math.random() * 10000);
+    })();
     </script>
 
 </body>

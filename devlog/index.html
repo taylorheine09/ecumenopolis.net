@@ -14,8 +14,16 @@
     <!-- ═══════════════════════════════════════════ NAV ═══ -->
     <nav class="nav">
         <div class="nav__logo">
-            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full"></a>
-            <a href="/"><img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon"></a>
+            <a href="/"><span class="glitch-wrap nav-glitch" id="nav-glitch-full">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--full glitch-img">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="" class="nav__logo-img nav__logo-img--full glitch-img glitch-img--r" aria-hidden="true">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_logo_vibrant_V2.svg" alt="" class="nav__logo-img nav__logo-img--full glitch-img glitch-img--b" aria-hidden="true">
+            </span></a>
+            <a href="/"><span class="glitch-wrap nav-glitch" id="nav-glitch-icon">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="Ecumenopolis" class="nav__logo-img nav__logo-img--icon glitch-img">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="" class="nav__logo-img nav__logo-img--icon glitch-img glitch-img--r" aria-hidden="true">
+                <img src="https://www.ecumenopolis.net/brand/ecumenopolis_e_vibrant.svg" alt="" class="nav__logo-img nav__logo-img--icon glitch-img glitch-img--b" aria-hidden="true">
+            </span></a>
         </div>
         <ul class="nav__links" id="nav-links">
             <li><a href="/" class="nav__link">HOME</a></li>
@@ -34,8 +42,9 @@
         <img src="https://www.ecumenopolis.net/images/placeholder3.png" alt="Ecumenopolis hero background" class="hero__bg">
         <div class="hero__overlay"></div>
         <div class="hero__content">
+            <div class="hero__scan-line"></div>
             <p class="hero__pre-label">[ ACTIVE PROJECT — BUILD 0.0.1 ]</p>
-            <h1 class="hero__title" style="font-size: 36px;">DEVLOG</h1>
+            <h1 class="hero__title" style="font-size: 36px;"><span class="devlog-glitch-wrap" id="devlog-title" data-text="DEVLOG">DEVLOG</span></h1>
             <p class="hero__sub">DEVELOPMENT LOG UPDATES</p>
             <div class="page-header__divider"></div>
             <h3 class="entry_data" style="font-weight: 300; font-size: 14px">Entries are ordered newest to oldest.</h3>
@@ -51,7 +60,7 @@
                 <div class="entry__meta">
                     <span class="entry__index">ENTRY_005</span>
                 </div>
-                <h2 class="entry__title">Placeholder Entry Five</h2>
+                <h2 class="entry__title entry__title--glitch" data-text="Placeholder Entry Five">Placeholder Entry Five</h2>
                 <div class="entry__sub-meta">
                     <h3 class="entry__date">21.02.2025</h3>
                     <span class="entry__sep">—</span>
@@ -68,7 +77,7 @@
                 <div class="entry__meta">
                     <span class="entry__index">ENTRY_004</span>
                 </div>
-                <h2 class="entry__title">Placeholder Entry Four</h2>
+                <h2 class="entry__title entry__title--glitch" data-text="Placeholder Entry Four">Placeholder Entry Four</h2>
                 <div class="entry__sub-meta">
                     <h3 class="entry__date">14.02.2025</h3>
                     <span class="entry__sep">—</span>
@@ -85,7 +94,7 @@
                 <div class="entry__meta">
                     <span class="entry__index">ENTRY_003</span>
                 </div>
-                <h2 class="entry__title">Placeholder Entry Three</h2>
+                <h2 class="entry__title entry__title--glitch" data-text="Placeholder Entry Three">Placeholder Entry Three</h2>
                 <div class="entry__sub-meta">
                     <h3 class="entry__date">07.02.2025</h3>
                     <span class="entry__sep">—</span>
@@ -102,7 +111,7 @@
                 <div class="entry__meta">
                     <span class="entry__index">ENTRY_002</span>
                 </div>
-                <h2 class="entry__title">Placeholder Entry Two</h2>
+                <h2 class="entry__title entry__title--glitch" data-text="Placeholder Entry Two">Placeholder Entry Two</h2>
                 <div class="entry__sub-meta">
                     <h3 class="entry__date">31.01.2025</h3>
                     <span class="entry__sep">—</span>
@@ -119,7 +128,7 @@
                 <div class="entry__meta">
                     <span class="entry__index">ENTRY_001</span>
                 </div>
-                <h2 class="entry__title">Placeholder Entry One</h2>
+                <h2 class="entry__title entry__title--glitch" data-text="Placeholder Entry One">Placeholder Entry One</h2>
                 <div class="entry__sub-meta">
                     <h3 class="entry__date">24.01.2025</h3>
                     <span class="entry__sep">—</span>
@@ -186,6 +195,290 @@
                 img.style.transform = `translateY(${offset}px)`;
             });
         });
+    </script>
+
+    <!-- ═══════════════════════════════════════════ GLITCH CSS ═══ -->
+    <style>
+        /* Nav glitch wrap rules */
+        .glitch-wrap {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-img { display: block; }
+
+        .glitch-img--r {
+            position: absolute;
+            top: 0; left: 0;
+            mix-blend-mode: screen;
+            opacity: 0;
+            filter:
+                brightness(0) saturate(100%)
+                invert(30%) sepia(90%) saturate(700%)
+                hue-rotate(320deg) brightness(120%);
+            pointer-events: none;
+        }
+        .glitch-img--b {
+            position: absolute;
+            top: 0; left: 0;
+            mix-blend-mode: screen;
+            opacity: 0;
+            filter:
+                brightness(0) saturate(100%)
+                invert(60%) sepia(80%) saturate(500%)
+                hue-rotate(180deg) brightness(130%);
+            pointer-events: none;
+        }
+
+        @keyframes nav-glitch-main {
+            0%   { transform: translate(0); clip-path: none; opacity: 1; }
+            10%  { transform: translate(-4px, 1px) skewX(-3deg); clip-path: polygon(0 10%, 100% 10%, 100% 40%, 0 40%); opacity: 0.85; }
+            20%  { transform: translate(4px, -2px) skewX(2deg); clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); }
+            40%  { transform: translate(0); clip-path: none; opacity: 1; }
+            100% { transform: translate(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes nav-glitch-r {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(7px, -2px); opacity: 0.6; }
+            20%  { transform: translate(-6px, 1px); opacity: 0.45; }
+            40%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes nav-glitch-b {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(-6px, 2px); opacity: 0.5; }
+            20%  { transform: translate(5px, -1px); opacity: 0.4; }
+            40%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .glitch-wrap.nav-glitching .glitch-img    { animation: nav-glitch-main 0.4s steps(1) forwards; }
+        .glitch-wrap.nav-glitching .glitch-img--r  { animation: nav-glitch-r 0.4s steps(1) forwards; }
+        .glitch-wrap.nav-glitching .glitch-img--b  { animation: nav-glitch-b 0.4s steps(1) forwards; }
+
+        /* Nav span visibility */
+        #nav-glitch-full { display: inline-block; }
+        #nav-glitch-icon { display: none; }
+        @media (max-width: 640px) {
+            #nav-glitch-full { display: none; }
+            #nav-glitch-icon { display: inline-block; }
+        }
+
+        .devlog-glitch-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Red channel */
+        .devlog-glitch-wrap::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(235, 68, 111, 0.75);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Blue/teal channel */
+        .devlog-glitch-wrap::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(129, 231, 212, 0.7);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Phase 1 — slice jitter */
+        @keyframes dg-main-p1 {
+            0%   { transform: translate(0); clip-path: none; opacity: 1; }
+            10%  { transform: translate(-6px, 2px) skewX(-4deg); clip-path: polygon(0 10%, 100% 10%, 100% 38%, 0 38%); opacity: 0.85; }
+            20%  { transform: translate(6px, -3px) skewX(3deg); clip-path: polygon(0 55%, 100% 55%, 100% 78%, 0 78%); }
+            30%  { transform: translate(-4px, 1px); clip-path: polygon(0 0%, 100% 0%, 100% 20%, 0 20%); opacity: 0.9; }
+            40%  { transform: translate(5px, -1px) skewX(-2deg); clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); }
+            50%  { transform: translate(0); clip-path: none; opacity: 1; }
+            60%  { transform: translate(-3px, 2px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); opacity: 0.8; }
+            80%  { transform: translate(0); clip-path: none; opacity: 1; }
+            100% { transform: translate(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes dg-r-p1 {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(10px, -3px); opacity: 0.7; }
+            20%  { transform: translate(-8px, 2px); opacity: 0.5; }
+            30%  { transform: translate(7px, -1px); opacity: 0.6; }
+            50%  { transform: translate(0); opacity: 0; }
+            60%  { transform: translate(9px, 2px); opacity: 0.55; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes dg-b-p1 {
+            0%   { transform: translate(0); opacity: 0; }
+            10%  { transform: translate(-9px, 3px); opacity: 0.6; }
+            20%  { transform: translate(7px, -2px); opacity: 0.45; }
+            30%  { transform: translate(-6px, 1px); opacity: 0.55; }
+            50%  { transform: translate(0); opacity: 0; }
+            60%  { transform: translate(-8px, -2px); opacity: 0.5; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Phase 2 — shear */
+        @keyframes dg-main-p2 {
+            0%   { transform: translate(0) skewX(0); clip-path: none; opacity: 1; }
+            8%   { transform: translate(-12px, 0) skewX(-12deg); clip-path: polygon(0 0%, 100% 0%, 100% 30%, 0 30%); opacity: 0.7; }
+            16%  { transform: translate(14px, 0) skewX(10deg); clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%); opacity: 0.8; }
+            24%  { transform: translate(-10px, 0) skewX(-8deg); clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); opacity: 0.75; }
+            35%  { transform: translate(8px, 0) skewX(6deg); clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%); opacity: 0.85; }
+            50%  { transform: translate(-5px, 0) skewX(-4deg); clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%); }
+            65%  { transform: translate(4px, 0) skewX(3deg); clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%); opacity: 0.9; }
+            80%  { transform: translate(-2px, 0) skewX(-1deg); clip-path: none; opacity: 0.95; }
+            100% { transform: translate(0) skewX(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes dg-r-p2 {
+            0%   { opacity: 0; transform: translate(0); }
+            8%   { transform: translate(18px, -2px) skewX(-10deg); opacity: 0.8; }
+            24%  { transform: translate(-14px, 1px) skewX(8deg); opacity: 0.65; }
+            50%  { transform: translate(12px, 0) skewX(-6deg); opacity: 0.7; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes dg-b-p2 {
+            0%   { opacity: 0; transform: translate(0); }
+            8%   { transform: translate(-16px, 2px) skewX(10deg); opacity: 0.7; }
+            24%  { transform: translate(12px, -1px) skewX(-8deg); opacity: 0.6; }
+            50%  { transform: translate(-10px, 0) skewX(5deg); opacity: 0.65; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .devlog-glitch-wrap.glitching-p1          { animation: dg-main-p1 0.45s steps(1) forwards; }
+        .devlog-glitch-wrap.glitching-p1::before  { animation: dg-r-p1 0.45s steps(1) forwards; }
+        .devlog-glitch-wrap.glitching-p1::after   { animation: dg-b-p1 0.45s steps(1) forwards; }
+
+        .devlog-glitch-wrap.glitching-p2          { animation: dg-main-p2 0.5s steps(1) forwards; }
+        .devlog-glitch-wrap.glitching-p2::before  { animation: dg-r-p2 0.5s steps(1) forwards; }
+        .devlog-glitch-wrap.glitching-p2::after   { animation: dg-b-p2 0.5s steps(1) forwards; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ GLITCH JS ═══ -->
+    <script>
+        (function() {
+            const wrap = document.getElementById('devlog-title');
+            let glitchCount = 0;
+
+            function triggerGlitch() {
+                glitchCount++;
+                const doShear = (glitchCount % 3 === 0);
+
+                wrap.classList.add('glitching-p1');
+                setTimeout(() => {
+                    wrap.classList.remove('glitching-p1');
+                    if (doShear) {
+                        setTimeout(() => {
+                            wrap.classList.add('glitching-p2');
+                            setTimeout(() => wrap.classList.remove('glitching-p2'), 550);
+                        }, 200);
+                    }
+                }, 450);
+
+                const next = 4000 + Math.random() * 6000;
+                setTimeout(triggerGlitch, next);
+            }
+
+            const initial = 4000 + Math.random() * 6000;
+            setTimeout(triggerGlitch, initial);
+        })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════ NAV GLITCH JS ═══ -->
+    <script>
+    (function() {
+        function triggerNavGlitch() {
+            const navFull = document.getElementById('nav-glitch-full');
+            const navIcon = document.getElementById('nav-glitch-icon');
+            [navFull, navIcon].forEach(el => {
+                el.classList.add('nav-glitching');
+                setTimeout(() => el.classList.remove('nav-glitching'), 420);
+            });
+            const next = 2000 + Math.random() * 8000;
+            setTimeout(triggerNavGlitch, next);
+        }
+        setTimeout(triggerNavGlitch, 2000 + Math.random() * 8000);
+    })();
+    </script>
+    <style>
+        .entry__title--glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .entry__title--glitch::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(235, 68, 111, 0.5);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .entry__title--glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(129, 231, 212, 0.45);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        @keyframes et-main {
+            0%   { transform: translate(0); clip-path: none; opacity: 1; }
+            15%  { transform: translate(-0.6px, 0.2px) skewX(-0.4deg); clip-path: polygon(0 10%, 100% 10%, 100% 38%, 0 38%); opacity: 0.98; }
+            30%  { transform: translate(0.6px, -0.3px) skewX(0.3deg); clip-path: polygon(0 55%, 100% 55%, 100% 78%, 0 78%); }
+            50%  { transform: translate(0); clip-path: none; opacity: 1; }
+            65%  { transform: translate(-0.3px, 0.2px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); opacity: 0.97; }
+            80%  { transform: translate(0); clip-path: none; opacity: 1; }
+            100% { transform: translate(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes et-r {
+            0%   { transform: translate(0); opacity: 0; }
+            15%  { transform: translate(1px, -0.3px); opacity: 0.07; }
+            30%  { transform: translate(-0.8px, 0.2px); opacity: 0.05; }
+            50%  { transform: translate(0); opacity: 0; }
+            65%  { transform: translate(0.9px, 0.2px); opacity: 0.06; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes et-b {
+            0%   { transform: translate(0); opacity: 0; }
+            15%  { transform: translate(-0.9px, 0.3px); opacity: 0.06; }
+            30%  { transform: translate(0.7px, -0.2px); opacity: 0.05; }
+            50%  { transform: translate(0); opacity: 0; }
+            65%  { transform: translate(-0.8px, -0.2px); opacity: 0.05; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        .entry__title--glitch.glitching          { animation: et-main 0.45s steps(1) forwards; }
+        .entry__title--glitch.glitching::before  { animation: et-r 0.45s steps(1) forwards; }
+        .entry__title--glitch.glitching::after   { animation: et-b 0.45s steps(1) forwards; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ ENTRY GLITCH JS ═══ -->
+    <script>
+    (function() {
+        const titles = document.querySelectorAll('.entry__title--glitch');
+        titles.forEach(title => {
+            function triggerGlitch() {
+                title.classList.add('glitching');
+                setTimeout(() => title.classList.remove('glitching'), 480);
+                const next = 1000 + Math.random() * 11000;
+                setTimeout(triggerGlitch, next);
+            }
+            const initial = 1000 + Math.random() * 11000;
+            setTimeout(triggerGlitch, initial);
+        });
+    })();
     </script>
 
 </body>
