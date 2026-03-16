@@ -8,6 +8,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://www.ecumenopolis.net/css/main.css">
+    <style>.hero__scanline-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(1, 20, 80, 0.28) 2px,
+        rgba(1, 20, 80, 0.28) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+    box-shadow: inset 0 0 60px rgba(30, 80, 180, 0.25);
+}
+
+.hero__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(1, 1, 41, 0.55) 100%
+    );
+    box-shadow: inset 0 0 120px rgba(20, 60, 180, 0.35);
+    pointer-events: none;
+    z-index: 1;
+}</style>
 </head>
 <body>
 
@@ -41,6 +68,8 @@
     <section class="hero">
         <img src="https://www.ecumenopolis.net/images/placeholder3.png" alt="Ecumenopolis hero background" class="hero__bg">
         <div class="hero__overlay"></div>
+        <div class="hero__scanline-overlay"></div>
+        <div class="hero__vignette"></div>
         <div class="hero__content">
             <div class="hero__scan-line"></div>
             <p class="hero__pre-label">[ ACTIVE PROJECT — BUILD 0.0.1 ]</p>
@@ -50,10 +79,10 @@
             <h3 class="entry_data" style="font-weight: 300; font-size: 14px">Entries are ordered newest to oldest.</h3>
         </div>
     </section>
-
+    
     <!-- ═══════════════════════════════════════════ ENTRIES ═══ -->
-    <main class="devlog">
-        <div class="devlog__container">
+    <main class="about">
+        <div class="devlog__container" style="padding-top: 1rem;">
 
             <!-- ENTRY 5 — NEWEST -->
             <article class="entry">

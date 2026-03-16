@@ -133,6 +133,34 @@ body {
     );
 }
 
+.hero__scanline-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(1, 20, 80, 0.28) 2px,
+        rgba(1, 20, 80, 0.28) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+    box-shadow: inset 0 0 60px rgba(30, 80, 180, 0.25);
+}
+
+.hero__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(1, 1, 41, 0.55) 100%
+    );
+    box-shadow: inset 0 0 120px rgba(20, 60, 180, 0.35);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .hero__content {
     position: relative;
     z-index: 2;
@@ -163,7 +191,7 @@ body {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.25em;
-    color: var(--col-teal);
+    color: var(--col-pale-blue);
     opacity: 0.85;
 }
 
@@ -316,14 +344,48 @@ body {
     font-weight: 900;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--col-off-white);
-    text-shadow: 0 0 30px rgba(235, 68, 111, 0.5);
+    color: var(--col-teal);
 }
+
+.roadmap-divider2 {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    background-color: var(--col-teal);
+    overflow: hidden;
+    /* 1. Pull the next section up by 1px to close the gap */
+    margin-bottom: -1px; 
+    /* 2. Ensure no internal padding is creating space */
+    padding: 0;
+}
+
+.roadmap-divider {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    background-color: transparent;
+    overflow: hidden;
+    /* 1. Pull the next section up by 1px to close the gap */
+    margin-bottom: -1px; 
+    /* 2. Ensure no internal padding is creating space */
+    padding: 0;
+}
+
+.roadmap-divider__img {
+    width: 100.2%; /* 3. Slight overshoot to prevent horizontal slivers */
+    height: auto;
+    /*display: block;*/
+    object-fit: contain;
+    /* 4. Ensure it sits flush against the top */
+    margin: 0;
+    vertical-align: bottom;
+        }
+
 
 /* ── ROADMAP SECTION ───────────────────────────────────────── */
 .roadmap {
-    background: var(--col-surface);
-    padding: 5rem 2rem 7rem;
+    background: var(--col-teal);
+    padding: 1rem 2rem 1rem;
     position: relative;
 }
 .roadmap__label {
@@ -331,7 +393,7 @@ body {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.2em;
-    color: var(--col-teal);
+    color: var(--col-pale-blue);
     margin-bottom: 4rem;
 }
 
@@ -374,10 +436,10 @@ body {
 }
 
 .milestone__circle--active {
-    background: var(--col-off-white);
-    border-color: var(--col-burn-red);
-    box-shadow: 0 0 20px var(--col-burn-red);
-    color: #b5253f;
+    background: var(--col-hot-pink);
+    border-color: var(--col-off-white);
+    box-shadow: 0 0 16px rgba(240, 146, 52, 0.5), 0 0 4px var(--col-burn-red);
+    color: var(--col-off-white);
     animation: glow-pulse-active 4s ease-in-out infinite;
 }
 
@@ -395,8 +457,8 @@ body {
 }
 
 @keyframes glow-pulse-active {
-    0%, 100% { box-shadow: 0 0 20px var(--col-burn-red); }
-    50%       { box-shadow: 0 0 4px rgba(181, 37, 63, 0.2); }
+    0%, 100% { box-shadow: 0 0 16px rgba(240, 146, 52, 0.5), 0 0 4px var(--col-burn-red); }
+    50%       { box-shadow: 0 0 4px rgba(240, 146, 52, 0.1), 0 0 1px var(--col-burn-red); }
 }
 
 @keyframes glow-pulse-completed {
@@ -563,6 +625,28 @@ body {
     gap: 0;
 }
 
+.devlog-divider {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    background-color: transparent;
+    overflow: hidden;
+    /* 1. Pull the next section up by 1px to close the gap */
+    margin-bottom: -1px; 
+    /* 2. Ensure no internal padding is creating space */
+    padding: 0;
+}
+
+.devlog-divider__img {
+    width: 100.2%; /* 3. Slight overshoot to prevent horizontal slivers */
+    height: auto;
+    /*display: block;*/
+    object-fit: contain;
+    /* 4. Ensure it sits flush against the top */
+    margin: 0;
+    vertical-align: bottom;
+        }
+
 /* ── ENTRY ─────────────────────────────────────────────────── */
 .entry {
     padding: 3rem 0;
@@ -633,7 +717,7 @@ body {
 .docs__sidebar {
     width: 25%;
     flex-shrink: 0;
-    background: var(--col-surface);
+    background: var(--col-pale-blue);
     border-right: 1px solid rgba(129, 231, 212, 0.15);
     padding: 2rem 0;
     position: sticky;
@@ -646,7 +730,7 @@ body {
 .docs__sidebar::-webkit-scrollbar-track { background: transparent; }
 .docs__sidebar::-webkit-scrollbar-thumb { background: rgba(129, 231, 212, 0.3); border-radius: 2px; }
 
-.doc-cat { margin-bottom: 0.25rem; }
+.doc-cat { margin-bottom: 0.25rem;}
 
 .doc-cat__toggle {
     width: 100%;
@@ -661,7 +745,6 @@ body {
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--col-teal);
     text-align: left;
     text-transform: uppercase;
     transition: color 0.2s, background 0.2s;

@@ -8,6 +8,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* ── CURSOR BLINK ───────────────────────────────────────── */
+        .terminal__cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background: var(--col-teal);
+            vertical-align: text-bottom;
+            animation: blink 1.1s step-end infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+    </style>
 </head>
 <body>
 
@@ -41,6 +57,8 @@
     <section class="hero">
         <img src="images/image_1.png" alt="Ecumenopolis hero background" class="hero__bg">
         <div class="hero__overlay"></div>
+        <div class="hero__scanline-overlay"></div>
+        <div class="hero__vignette"></div>
         <div class="hero__content">
             <div class="hero__scan-line"></div>
             <p class="hero__pre-label">[ ACTIVE PROJECT — BUILD 0.0.1 ]</p>
@@ -65,46 +83,72 @@
         <canvas class="about__pcb" id="pcb-canvas" aria-hidden="true"></canvas>
         <div class="about__container">
             <div class="about__label">// SECTION_01</div>
-            <h2 class="about__heading">About The Game</h2>
+            <h2 class="about__heading">Your Story Begins Here</h2>
             <div class="about__divider"></div>
             <p class="about__body">
-                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
+                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. 
+                But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
             </p>
-            <p class="about__body">
-                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
-            </p>
-            <p class="about__body">
-                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
-            </p>
-            <p class="about__body">
-                "The surface is a myth, kid. Work, fight, steal, scheme - we gotta start somewhere. But you can dream of the world you want to live in, or you can dream out loud." - Cliff Havmar
-            </p>
+            <span></span>
+            <p class="about__body">Born in the deepest depths of the city, deep within the catacombs, 
+                set out to begin your own journey. Scavenge the leftovers of society, 
+                climb the corporate ladder with over 100 minigame jobs, 
+                scheme to disrupt the stock markets, or join the syndicates to fight your way to the top. 
+                The surface is nearly 7000 levels above your home, and every decision you make shapes the 
+                economy you desperately depend on to survive. This is your story. How you get there is up to you.</p>
+            <span></span>
+            <h3 class="doc-panel__sub">Scavenge</h3>
+            <p class="about__body">The city's depths are full of what others have thrown away. Everything has value if you know where to look.</p>
+            <h3 class="doc-panel__sub">Work</h3>
+            <p class="about__body">Over 100 minigame job simulators across every level of the city. Start at the bottom, earn your way to the top.</p>
+            <h3 class="doc-panel__sub">Scheme</h3>
+            <p class="about__body">The city runs on money. Manipulate markets, exploit systems, and bend the economy to your advantage.</p>
+            <h3 class="doc-panel__sub">Fight</h3>
+            <p class="about__body">Fight the system that weighs down on everyone. Work alone or join a syndicate. Steal and claw your way to the surface.</p>
+            <span></span>
+            <p class="about__body">The system decides who survives. Don't let the bastards grind you down.</p>
+            <span></span>
+            <span></span>
+            <p class="about__body">[PROTOCOL_01] — status: complete</p>
+            <p class="about__body">C:\System\about-protocol.e > End of transmition <span class="terminal__cursor"></span></p>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════ ROADMAP HERO ═══ -->
     <section class="roadmap-hero">
-        <img src="images/placeholder2.png" alt="Roadmap background" class="hero__bg">
+        <canvas class="page-header__terminal" id="terminal-canvas" aria-hidden="true"></canvas>
         <div class="hero__overlay"></div>
         <div class="roadmap-hero__content">
-            <p class="hero__pre-label">[ DEVELOPMENT TIMELINE ]</p>
+            <p class="hero__pre-label" style="color:#eb446f">[ DEVELOPMENT TIMELINE ]</p>
             <h2 class="roadmap-hero__title">ROAD MAP</h2>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════ ROADMAP ═══ -->
+    
+    <div class="roadmap-divider">
+        <img src="Section Divider.svg" alt="" class="roadmap-divider__img">
+    </div>
+    
     <section class="roadmap">
         <div class="roadmap__container">
             <div class="roadmap__label">// SECTION_02</div>
+            <h2 class="entry__title entry__title--glitch" style="padding: 0rem 2rem 2rem;" data-text="To Do Items">TO DO ITEMS</h2>
+        </div>
+    </section>
 
-            
-            <p class="hero__pre-label">[ TO DO ITEMS ]</p>
-
-            <!-- MILESTONE 1 -->
+    <div class="roadmap-divider2" style="background-color: #81e7d4">
+    <img src="Section Divider_4.svg" alt="" class="roadmap-divider__img">
+    </div>
+    
+    <section class="roadmap" style="background-color: #010129;">
+        <div class="roadmap__container">
+            <div style="padding-bottom: 5%;"></div>
+            <!-- MILESTONE 2 -->
             <div class="milestone milestone--right milestone--active">
                 <div>
                     <div class="milestone__circle milestone__circle--active" id="milestone-circle">
-                        <span id="milestone-number">1</span>
+                        <span id="milestone-number">2</span>
                     </div>
                 </div>
                 <div class="milestone__content milestone__content--right">
@@ -113,10 +157,10 @@
                 </div>
             </div>
 
-            <!-- MILESTONE 2 -->
+            <!-- MILESTONE 3 -->
             <div class="milestone milestone--right">
                 <div>
-                    <div class="milestone__circle milestone__circle">2</div>
+                    <div class="milestone__circle milestone__circle">3</div>
                 </div>
                 <div class="milestone__content milestone__content--right">
                     <h2 class="milestone__name">WORLD SYSTEMS</h2>
@@ -124,10 +168,10 @@
                 </div>
             </div>
 
-            <!-- MILESTONE 3 -->
+            <!-- MILESTONE 4 -->
             <div class="milestone milestone--right">
                 <div>
-                    <div class="milestone__circle">3</div>
+                    <div class="milestone__circle">4</div>
                 </div>
                 <div class="milestone__content milestone__content--right">
                     <h2 class="milestone__name">INHABITANTS</h2>
@@ -135,10 +179,10 @@
                 </div>
             </div>
 
-            <!-- MILESTONE 4 -->
+            <!-- MILESTONE 5 -->
             <div class="milestone milestone--righ">
                 <div>
-                    <div class="milestone__circle">4</div>
+                    <div class="milestone__circle">5</div>
                 </div>
                 <div class="milestone__content milestone__content--right">
                     <h2 class="milestone__name">ALPHA BUILD</h2>
@@ -146,30 +190,37 @@
                 </div>
             </div>
 
-            <!-- MILESTONE 5 -->
+            <!-- MILESTONE 6 -->
             <div class="milestone milestone--right">
                 <div>
-                    <div class="milestone__circle">5</div>
+                    <div class="milestone__circle">6</div>
                 </div>
                 <div class="milestone__content milestone__content--right">
                     <h2 class="milestone__name">LAUNCH</h2>
                     <p class="milestone__desc">Full release. The planet is alive. Survive it.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <p class="hero__pre-label">[ COMPLETED ]</p>
+    <div class="roadmap-divider2" style="background-color: #010129">
+    <img src="section_divider_3.svg" alt="" class="roadmap-divider__img">
+    </div>
 
-            <!-- MILESTONE SAMPLE — RIGHT (completed) -->
+    <section class="roadmap" style="background-color: #1b244d;">
+        <div class="roadmap__container">
+            <h2 class="entry__title entry__title--glitch" style="padding-top: 0px" data-text="To Do Items">Completed</h2>
+            
+            <!-- MILESTONE SAMPLE — RIGHT (completed) 1 -->
             <div class="milestone milestone--right milestone--completed">
                 <div>
-                    <div class="milestone__circle milestone__circle--completed">0</div>
+                    <div class="milestone__circle milestone__circle--completed">1</div>
                 </div>
                 <div class="milestone__content milestone__content--right">
-                    <h2 class="milestone__name--completed">COMPLETED EXAMPLE</h2>
-                    <p class="milestone__desc" style="color: rgb(110, 110, 110);">Text will go here to describe the milestone</p>
+                    <h2 class="milestone__name--completed">WEB LAUNCH</h2>
+                    <p class="milestone__desc" style="color: rgb(110, 110, 110);">Lanched website with Homepage, Devlog Page, Documentation page, and the Terms of Service Page.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -671,6 +722,240 @@
 
         setTimeout(triggerCircleGlitch, 1000 + Math.random() * 7000);
         setTimeout(triggerNumberGlitch, 2000 + Math.random() * 10000);
+    })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════ TERMINAL BG CSS ═══ -->
+    <style>
+        .page-header { position: relative; }
+        .page-header__terminal {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .page-header__inner { position: relative; z-index: 1; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ TERMINAL BG JS ═══ -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('terminal-canvas');
+        const header = canvas.parentElement;
+        const ctx = canvas.getContext('2d');
+        const COLOR = '#81e7d4';
+        const FONT_SIZE = 11;
+        const LINE_HEIGHT = 16;
+        const FONT = `${FONT_SIZE}px "Roboto Mono", monospace`;
+
+        const LINES = [
+            '> INIT system_boot.sh --verbose',
+            '  [OK] mounting /dev/ecumen0',
+            '  [OK] loading kernel modules',
+            '  [OK] network interface eth0 up',
+            '> SCAN node_registry --depth=all',
+            '  found 8192 registered nodes',
+            '  active: 4471  |  dormant: 3721',
+            '> QUERY population_index --sector=deep',
+            '  sector_01 ... 2,847,331 entities',
+            '  sector_02 ... 1,994,002 entities',
+            '  sector_03 ... 3,112,887 entities',
+            '  WARNING: sector_04 data incomplete',
+            '> LOAD city_map.dat --render=false',
+            '  parsing level 0001 ... done',
+            '  parsing level 0512 ... done',
+            '  parsing level 1024 ... done',
+            '  parsing level 2048 ... done',
+            '  parsing level 4096 ... done',
+            '  parsing level 7168 ... done [SURFACE]',
+            '  parsing level 8192 ... done [APEX]',
+            '> RUN integrity_check --all',
+            '  checking subsystem: POWER ... pass',
+            '  checking subsystem: WATER ... pass',
+            '  checking subsystem: ATMO  ... degraded',
+            '  checking subsystem: COMMS ... pass',
+            '  checking subsystem: RAIL  ... pass',
+            '  WARNING: atmospheric recyclers at 61%',
+            '> FETCH faction_data --format=raw',
+            '  [SYNDICATE_07] status: active',
+            '  [CORP_HELION]  status: active',
+            '  [DEEP_CULT_3]  status: unknown',
+            '  [FREE_RUNNERS] status: active',
+            '  [IRON_WARD]    status: hostile',
+            '> EXEC resource_audit.sh',
+            '  fuel_cells ......... 84%',
+            '  coolant_reserve .... 71%',
+            '  data_storage ....... 99%',
+            '  power_grid ......... 92%',
+            '> PING surface_relay --timeout=30',
+            '  relay_01 ... response 14ms',
+            '  relay_02 ... response 22ms',
+            '  relay_03 ... no response',
+            '  relay_04 ... response 8ms',
+            '> LOG system_events --last=100',
+            '  [2291.03.14 04:12] node_7741 offline',
+            '  [2291.03.14 04:18] rerouting traffic',
+            '  [2291.03.14 05:01] node_7741 restored',
+            '  [2291.03.14 06:33] sector_04 alert',
+            '  [2291.03.14 07:44] alert cleared',
+            '> COMPILE build_manifest.dat',
+            '  reading source files ...',
+            '  linking dependencies ...',
+            '  optimizing output .....',
+            '  build complete: 0 errors, 2 warnings',
+            '> STATUS all --brief',
+            '  city_core .......... ONLINE',
+            '  deep_transit ....... ONLINE',
+            '  surface_access ..... RESTRICTED',
+            '  emergency_systems .. STANDBY',
+            '> _',
+        ];
+
+        function resize() {
+            canvas.width = header.offsetWidth;
+            canvas.height = header.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Build schedule with variable speed
+        // Base char delay is 18ms, range is 50%-400% = 9ms to 72ms
+        // Speed changes randomly every few characters to simulate real terminal bursts
+        const BASE_DELAY = 18;
+        const LINE_PAUSE_BASE = 120;
+
+        let schedule = [];
+        let totalMs = 0;
+        let currentSpeed = 1.0; // multiplier
+        let charsUntilSpeedChange = Math.floor(Math.random() * 20) + 5;
+
+        LINES.forEach(line => {
+            for (let i = 0; i < line.length; i++) {
+                // Randomly change speed
+                charsUntilSpeedChange--;
+                if (charsUntilSpeedChange <= 0) {
+                    // New speed between 0.25 (4x faster) and 2.0 (2x slower = 50% speed)
+                    currentSpeed = 0.25 + Math.random() * 1.75;
+                    charsUntilSpeedChange = Math.floor(Math.random() * 25) + 3;
+                }
+                schedule.push({ time: totalMs, lineText: line, charIndex: i });
+                totalMs += Math.round(BASE_DELAY * currentSpeed);
+            }
+            // Variable pause between lines — commands pause longer than output
+            const isCommand = line.trimStart().startsWith('>');
+            const pauseMultiplier = isCommand ? (1.5 + Math.random()) : (0.5 + Math.random() * 0.5);
+            totalMs += Math.round(LINE_PAUSE_BASE * pauseMultiplier);
+        });
+
+        const LOOP_DURATION = totalMs;
+        const start = performance.now();
+
+        function draw(now) {
+            const W = canvas.width;
+            const H = canvas.height;
+            ctx.clearRect(0, 0, W, H);
+
+            const elapsed = (now - start) % LOOP_DURATION;
+
+            ctx.font = FONT;
+            ctx.fillStyle = COLOR;
+
+            const lineTexts = {};
+            for (const entry of schedule) {
+                if (entry.time > elapsed) break;
+                lineTexts[entry.lineText] = entry.lineText.substring(0, entry.charIndex + 1);
+            }
+
+            const lines = Object.values(lineTexts).reverse();
+            const paddingX = 24;
+            const paddingBottom = 16;
+            let y = H - paddingBottom;
+
+            for (let i = 0; i < lines.length; i++) {
+                if (y < 0) break;
+                ctx.fillText(lines[i], paddingX, y);
+                y -= LINE_HEIGHT;
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        requestAnimationFrame(draw);
+    })();
+    </script>
+    <style>
+        .entry__title--glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .entry__title--glitch::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(235, 68, 111, 0.5);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .entry__title--glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            color: rgba(129, 231, 212, 0.45);
+            mix-blend-mode: screen;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        @keyframes et-main {
+            0%   { transform: translate(0); clip-path: none; opacity: 1; }
+            15%  { transform: translate(-0.6px, 0.2px) skewX(-0.4deg); clip-path: polygon(0 10%, 100% 10%, 100% 38%, 0 38%); opacity: 0.98; }
+            30%  { transform: translate(0.6px, -0.3px) skewX(0.3deg); clip-path: polygon(0 55%, 100% 55%, 100% 78%, 0 78%); }
+            50%  { transform: translate(0); clip-path: none; opacity: 1; }
+            65%  { transform: translate(-0.3px, 0.2px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); opacity: 0.97; }
+            80%  { transform: translate(0); clip-path: none; opacity: 1; }
+            100% { transform: translate(0); clip-path: none; opacity: 1; }
+        }
+        @keyframes et-r {
+            0%   { transform: translate(0); opacity: 0; }
+            15%  { transform: translate(1px, -0.3px); opacity: 0.07; }
+            30%  { transform: translate(-0.8px, 0.2px); opacity: 0.05; }
+            50%  { transform: translate(0); opacity: 0; }
+            65%  { transform: translate(0.9px, 0.2px); opacity: 0.06; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes et-b {
+            0%   { transform: translate(0); opacity: 0; }
+            15%  { transform: translate(-0.9px, 0.3px); opacity: 0.06; }
+            30%  { transform: translate(0.7px, -0.2px); opacity: 0.05; }
+            50%  { transform: translate(0); opacity: 0; }
+            65%  { transform: translate(-0.8px, -0.2px); opacity: 0.05; }
+            80%  { transform: translate(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        .entry__title--glitch.glitching          { animation: et-main 0.45s steps(1) forwards; }
+        .entry__title--glitch.glitching::before  { animation: et-r 0.45s steps(1) forwards; }
+        .entry__title--glitch.glitching::after   { animation: et-b 0.45s steps(1) forwards; }
+    </style>
+
+    <!-- ═══════════════════════════════════════════ ENTRY GLITCH JS ═══ -->
+    <script>
+    (function() {
+        const titles = document.querySelectorAll('.entry__title--glitch');
+        titles.forEach(title => {
+            function triggerGlitch() {
+                title.classList.add('glitching');
+                setTimeout(() => title.classList.remove('glitching'), 480);
+                const next = 1000 + Math.random() * 11000;
+                setTimeout(triggerGlitch, next);
+            }
+            const initial = 1000 + Math.random() * 11000;
+            setTimeout(triggerGlitch, initial);
+        });
     })();
     </script>
 
