@@ -717,7 +717,7 @@ body {
 .docs__sidebar {
     width: 25%;
     flex-shrink: 0;
-    background: var(--col-pale-blue);
+    background: var(--col-surface);
     border-right: 1px solid rgba(129, 231, 212, 0.15);
     padding: 2rem 0;
     position: sticky;
