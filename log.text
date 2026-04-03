@@ -1,0 +1,873 @@
+Git Commit Instructions:
+1.
+git add .
+2.
+git commit -m "your message here"
+3.
+git push
+
+
+Compile Instructions:
+
+scons platform=windows target=template_debug
+
+
+
+
+
+
+2026 Start.
+
+
+
+
+
+
+
+Fri Feb 20 -
+
+
+
+Microsoft Windows [Version 10.0.26100.7840]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Taylor>cd C:\Godot\Ecumenopolis
+
+C:\Godot\Ecumenopolis>scons platform=windows target=template_debug
+scons: Reading SConscript files ...
+Auto-detected 20 CPU cores available for build parallelism. Using 19 cores by default. You can override it with the -j argument.
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.a' is up to date.
+scons: `bin\libvoxel.dll' is up to date.
+scons: done building targets.
+
+C:\Godot\Ecumenopolis>git init
+Initialized empty Git repository in C:/Godot/Ecumenopolis/.git/
+
+C:\Godot\Ecumenopolis>code .gitignore
+
+C:\Godot\Ecumenopolis>git add .
+warning: in the working copy of 'TestScene.tscn', LF will be replaced by CRLF the next time Git touches it
+warning: adding embedded git repository: godot-cpp
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> godot-cpp
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached godot-cpp
+hint:
+hint: See "git help submodule" for more information.
+warning: in the working copy of 'project.godot', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test_chunk.gd', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test_chunk.gd.uid', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'voxel.gdextension.uid', LF will be replaced by CRLF the next time Git touches it
+
+C:\Godot\Ecumenopolis>git rm --cached godot-cpp
+error: the following file has staged content different from both the
+file and the HEAD:
+    godot-cpp
+(use -f to force removal)
+
+C:\Godot\Ecumenopolis>git rm --cached -f godot-cpp
+rm 'godot-cpp'
+
+C:\Godot\Ecumenopolis>cd godot-cpp
+
+C:\Godot\Ecumenopolis\godot-cpp>git checkout 4.5
+Already on '4.5'
+Your branch is up to date with 'origin/4.5'.
+
+C:\Godot\Ecumenopolis\godot-cpp>git reset
+
+C:\Godot\Ecumenopolis\godot-cpp>git add .
+
+C:\Godot\Ecumenopolis\godot-cpp>
+C:\Godot\Ecumenopolis\godot-cpp>cd ..
+
+C:\Godot\Ecumenopolis>git add .
+
+C:\Godot\Ecumenopolis>git commit -m "Initial commit - VoxelChunk proof of concept working"
+[master (root-commit) 8a554fc] Initial commit - VoxelChunk proof of concept working
+ 12 files changed, 306 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 SConstruct
+ create mode 100644 TestScene.tscn
+ create mode 100644 project.godot
+ create mode 100644 src/VoxelChunk.cpp
+ create mode 100644 src/VoxelChunk.h
+ create mode 100644 src/register_types.cpp
+ create mode 100644 src/register_types.h
+ create mode 100644 test_chunk.gd
+ create mode 100644 test_chunk.gd.uid
+ create mode 100644 voxel.gdextension
+ create mode 100644 voxel.gdextension.uid
+
+C:\Godot\Ecumenopolis>git remote add origin https://github.com/taylorheine09/Ecumenopolis.git
+
+C:\Godot\Ecumenopolis>git branch -M main
+
+C:\Godot\Ecumenopolis>git push -u origin main
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed for 'https://github.com/taylorheine09/Ecumenopolis.git/'
+
+C:\Godot\Ecumenopolis>git push -u origin main
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (15/15), 4.08 KiB | 2.04 MiB/s, done.
+Total 15 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/taylorheine09/Ecumenopolis.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+C:\Godot\Ecumenopolis>git log
+commit 8a554fc847717190b2ea50b80401d6282f691673 (HEAD -> main, origin/main)
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:06:54 2026 -0400
+
+    Initial commit - VoxelChunk proof of concept working
+
+C:\Godot\Ecumenopolis>code DEVLOG.md
+
+C:\Godot\Ecumenopolis>git commit -m "Added development log"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        DEVLOG.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Godot\Ecumenopolis>git push
+Everything up-to-date
+
+C:\Godot\Ecumenopolis>git log
+commit 8a554fc847717190b2ea50b80401d6282f691673 (HEAD -> main, origin/main)
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:06:54 2026 -0400
+
+    Initial commit - VoxelChunk proof of concept working
+
+C:\Godot\Ecumenopolis>git add .
+
+C:\Godot\Ecumenopolis>git commit -m "Added dev log"
+[main dad4112] Added dev log
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 DEVLOG.md
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 409 bytes | 409.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   8a554fc..dad4112  main -> main
+
+C:\Godot\Ecumenopolis>git log
+commit dad411236f1814f618ac238cf9430c7158975820 (HEAD -> main, origin/main)
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:41:45 2026 -0400
+
+    Added dev log
+
+commit 8a554fc847717190b2ea50b80401d6282f691673
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:06:54 2026 -0400
+
+    Initial commit - VoxelChunk proof of concept working
+
+C:\Godot\Ecumenopolis>git add .
+
+C:\Godot\Ecumenopolis>git commit -m "Updated dev log"
+[main 90ab475] Updated dev log
+ 5 files changed, 645 insertions(+)
+ create mode 100644 DEVLOG/Images/placeholder1.png
+ create mode 100644 DEVLOG/Images/placeholder2.png
+ create mode 100644 DEVLOG/css/main.css
+ rename DEVLOG.md => DEVLOG/devlog.html (100%)
+ create mode 100644 DEVLOG/index.html
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 3.52 MiB | 1.56 MiB/s, done.
+Total 9 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   dad4112..90ab475  main -> main
+
+C:\Godot\Ecumenopolis>git add .
+
+C:\Godot\Ecumenopolis>git commit -m "Web update"
+[main 62fcdb1] Web update
+ 6 files changed, 692 insertions(+), 16 deletions(-)
+ create mode 100644 DEVLOG/Images/placeholder3.png
+ create mode 100644 DEVLOG/Images/placeholder4.png
+ create mode 100644 DEVLOG/documentation.html
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 18, done.
+Counting objects: 100% (18/18), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 3.98 MiB | 1.19 MiB/s, done.
+Total 11 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   90ab475..62fcdb1  main -> main
+
+C:\Godot\Ecumenopolis>git add .
+
+C:\Godot\Ecumenopolis>git commit -m "Fixed typo"
+[main df56d37] Fixed typo
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 356 bytes | 356.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   62fcdb1..df56d37  main -> main
+
+
+
+
+
+
+Sat Feb 21 -
+
+
+
+C:\Godot\Ecumenopolis>git log
+commit df56d37aa8ae8856791beacf3fe0098a68bebdb1 (HEAD -> main, origin/main)
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Sat Feb 21 02:27:10 2026 -0400
+
+    Fixed typo
+
+commit 62fcdb13e7ceac16a2d53ecf3ff4943b3885333c
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Sat Feb 21 02:23:42 2026 -0400
+
+    Web update
+
+commit 90ab475d04527c5bde59b0adc79bae3ddf232117
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Sat Feb 21 00:00:44 2026 -0400
+
+    Updated dev log
+
+commit dad411236f1814f618ac238cf9430c7158975820
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:41:45 2026 -0400
+
+    Added dev log
+
+commit 8a554fc847717190b2ea50b80401d6282f691673
+Author: Taylor Heine <taylorheine09@gmail.com>
+Date:   Fri Feb 20 07:06:54 2026 -0400
+
+    Initial commit - VoxelChunk proof of concept working
+
+C:\Godot\Ecumenopolis>
+
+
+
+
+
+Sun Feb 22 -
+
+Web Development Stuff
+
+
+
+Mon Feb 23 -
+
+Social Media Set Up.
+
+
+
+Tuesday Feb 24 -
+
+Logo and Brand Development.
+
+C:\Godot\Ecumenopolis>git add .
+warning: in the working copy of 'TestScene.tscn', LF will be replaced by CRLF the next time Git touches it
+
+C:\Godot\Ecumenopolis>git commit -m "Begining of web development."
+[main 07cc2fa] Begining of web development.
+ 4 files changed, 444 insertions(+), 75 deletions(-)
+ create mode 100644 DEVLOG/log.text
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (8/8), 4.17 KiB | 4.17 MiB/s, done.
+Total 8 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   df56d37..07cc2fa  main -> main
+
+C:\Godot\Ecumenopolis>
+
+
+
+
+
+
+
+Thursday February 26:
+Hours of limited progress.
+
+
+
+
+Friday February 27:
+Determined no progress. Have to scrap work and do deeper research on planetary generation.
+
+
+
+
+Saturday February 28th:
+
+Going with Powers of 2.
+
+64 chunk tall system with different layers
+
+The layers are broken into the deep layers which is layer 1 to 4 which is dense with no open space and is made up of industrial styled modules, layer 5 to 12 is made up of each chunk having a 2 wide by 2 tall tunnels that sprawl across the entire planet as a seemless maze with chunks either being a tunnel that goes the full length of the chunk going in the north and south directions, or the east and west directions, or it is a T intersection, an L intersection, or a full intersection, then layers 13 to 28 being the same, except the tunnels are wide and 4 tall.  Then there are the open space layers with a ceiling layer which is for layers 29 to 36, 37 to 44, 45 to 52, and 53 to 60 (the open spaces will have skyscrapers in them, but for the most part are empty space with there being quarter chunk sized pillars that are 16 blocks wide, that are at the corners of super chunks which are 8 chunks by 8 chunks. The pillars go from the very bottom to chunk layer 60 and are completely solid and inaccessible), and the Surface Layer which is chunk 61-64 which is made up of skyscrapers.
+
+
+
+
+Tuesday March 3rd: 
+Started working on the game's stock market feature.
+Pushing to git if it works.
+
+Math for change amounts for companies:
+
+Math.floor(Math.pow(Math.random(), exponent) * range) + 1
+```
+
+`Math.random()` gives you 0–1 uniform. Raising it to a power **skews the distribution**:
+
+- `exponent = 1` — flat uniform, no bias
+- `exponent > 1` — biased toward **low numbers** (most rolls land small, rare big hits)
+- `exponent < 1` (e.g. 0.5) — biased toward **high numbers**
+
+**Visual of exponent > 1 (e.g. 2):**
+```
+1        500      1000000
+████████▓▓▓░░░░░░░░░░░░░░
+most rolls here    rare
+
+
+
+
+
+Friday March 6th:
+
+A lot of market research to get semi realistic starting numbers for the 
+fortune 256 for the simulated stock market.
+
+Generated the following documents:
+
+DEVLOG >
+    css >
+        stock_market.css
+    Ecum_Stock_Market >
+        company_distribution.xlsx
+        crypto_over_time.json
+        fortune256_over_time.json
+        fortune256.json
+        procedural_companies.json
+        procedural_companies.xlsx
+        sector_value_ranges.xlsx
+        stock_market.json
+        value_over_time.json
+    Images >
+    ecum_stock_market.html
+    ecum_stock_marketBACKUP.html
+    ecumenopolis_stock_market_TDD.text
+    number of zeros.xlsx
+    stock_market_commands.text
+
+Total of 15 new documents.
+
+number of lines of code per document:
+stock_market.css                            422
+crypto_over_time.json                       2,270
+fortune256_over_time.json                   104
+fortune256.json                             2,308
+procedural_companies.json                   1
+stock_market.json                           1,504
+value_over_time.json                        26,372
+ecum_stock_market.html                      992
+ecumenopolis_stock_market_TDD.text          296
+stock_market_commands.text                  17
+
+Total number of lines                       34,286
+
+
+C:\Godot\Ecumenopolis>git commit -m "Created 15 new files. Generated 34,228 lines of code"
+[main 415a8d4] Created 15 new files. Generated 34,228 lines of code
+ 16 files changed, 35396 insertions(+), 1 deletion(-)
+ create mode 100644 DEVLOG/Ecum_Stock_Market/company_distribution.xlsx
+ create mode 100644 DEVLOG/Ecum_Stock_Market/crypto_over_time.json
+ create mode 100644 DEVLOG/Ecum_Stock_Market/fortune256.json
+ create mode 100644 DEVLOG/Ecum_Stock_Market/fortune256_over_time.json
+ create mode 100644 DEVLOG/Ecum_Stock_Market/procedural_companies.json
+ create mode 100644 DEVLOG/Ecum_Stock_Market/procedural_companies.xlsx
+ create mode 100644 DEVLOG/Ecum_Stock_Market/sector_value_ranges.xlsx
+ create mode 100644 DEVLOG/Ecum_Stock_Market/stock_market.json
+ create mode 100644 DEVLOG/Ecum_Stock_Market/value_over_time.json
+ create mode 100644 DEVLOG/css/stock_market.css
+ create mode 100644 DEVLOG/ecum_stock_market.html
+ create mode 100644 DEVLOG/ecum_stock_marketBACKUP.html
+ create mode 100644 DEVLOG/ecumenopolis_stock_market_TDD.txt
+ create mode 100644 DEVLOG/number of zeros.xlsx
+ create mode 100644 DEVLOG/stock_market_commands.text
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 24, done.
+Counting objects: 100% (24/24), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (20/20), 5.02 MiB | 1.58 MiB/s, done.
+Total 20 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   3685fb8..415a8d4  main -> main
+
+
+
+
+Saturday March 7th:
+
+Completed Ecumenopolis Logo
+Completed Ecumenopolis Color Pallet
+Completed Ecumenoplis "e"
+Uploaded first Ecumenopolis social media post
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (13/13), 70.47 KiB | 3.52 MiB/s, done.
+Total 13 (delta 9), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (9/9), completed with 7 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   415a8d4..c7927c3  main -> main
+
+
+Monday March 9th:
+Generated large spreadsheet with possible names to use with the 256 companies.
+
+
+Tuesday March 10th - Wednsday March 11th:
+
+Deciding and collecting info on Unique characters for different made up alphabets.
+Primary Market Languages in Use:
+
+1. Human - Varetheon
+2. Human - Nordaveon
+3. Human - Galtharvian
+4. Human - Tiraveon
+5. Human - Borealithic
+6. Elven - Sarythean
+7. Elven - Corvalathean
+8. Dark  - Zarathoveon
+
+
+Human Alphabets:
+
+
+Shipping Cultures Alphabet: 
+43 Vowels, 61 Consonants, total of 104 characters
+
+Used by:
+Tiraveon
+
+
+Trade Alphabet:
+7 Vowels with 9 total accent types (Not all vowels utilize all 9 accents),
+19 Consonants 4 total accent types (Not all consonants have the same accent types). Total of 26 characters, and 13 unique accents that go overtop of characters.
+
+Used by:
+Nordaveon and Borealithic
+
+
+Sophisticated Alphabet:
+Total of 47 characters
+
+Used by:
+Varetheon and Galtharvian
+
+
+Total Human Character Count:
+47 sophisticated + 26(-23)(with a total 13 accents that are unevenly used throughout)) + 104(-23)(no accents in shipping alphabet (removed the special "stop" character which is a punctuation type rather than a letter))
+Total = 131
+
+
+Elven Alphabets:
+
+Sarythean Alphabet:
+156 sounds, however every word has a different unique character as it started as painted symbols. 2 writing systems. One is phonetic and shares the same letters as the Corvalathean alphabet, however it is smoother and rounder versions of the characters.
+
+
+Corvalathean Alphabet:
+156 characters that are started as carvings into stone.
+
+
+Dark Elven Alphabet:
+Zarathoveon Alphabet
+
+101 characters total.
+
+
+Universal Characters:
+31 unique universal characters.
+
+
+Total number of unique characters needed to be designed:
+575
+
+
+git commited:
+
+C:\Godot\Ecumenopolis>git commit - "Names and language development rearch to use for Fortune256 names"
+[main 291339f] Names and language development research to use for Fortune256 names
+ 11 files changed, 169 insertions(+), 2 deletions(-)
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/00_world_lastnames.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/1_shipping_alphabet_sounds.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/2_trade_alphabet_revised.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/3_sophisticated_alphabet.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/4_elven_sound_inventory.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/5_zarathoveon_characters.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/6_universal_special_characters.xlsx
+ create mode 100644 Branding/2_in_game_company_brands/00_Alphabets/alphabet_lengths.txt
+ create mode 100644 Branding/2_in_game_company_brands/0_descriptions.xlsx
+
+C:\Godot\Ecumenopolis>git push
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (18/18), 1.05 MiB | 940.00 KiB/s, done.
+Total 18 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/taylorheine09/Ecumenopolis.git
+   c7927c3..291339f  main -> main
+
+
+
+
+Thursday March 12:
+
+Completed Website Structure
+
+
+Friday March 13: 
+
+Developed Mobile implications for Website
+
+
+Saturday March 14:
+
+Major design update to whole website.
+
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git push origin main
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (11/11), 14.77 KiB | 2.95 MiB/s, done.
+Total 11 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 3 local objects.
+To https://github.com/taylorheine09/ecumenopolis.net.git
+   8531a8b..966fc40  main -> main
+
+Finalized adding pages and custom design.
+
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git push origin main
+Enumerating objects: 22, done.
+Counting objects: 100% (22/22), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (12/12), 2.46 KiB | 1.23 MiB/s, done.
+Total 12 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (6/6), completed with 5 local objects.
+To https://github.com/taylorheine09/ecumenopolis.net.git
+   966fc40..686432b  main -> main
+
+
+Sunday March 15:
+
+Completed Concept Art Image 1 and uploaded to online.
+
+
+Monday March 16:
+Added images, fixed conetent on site, added more UI elements, updated the design to fit the aesthetic more so. All that's left in working on is planning out the road map for the home page, working on a devlog with a report of everything worked on so far leading up to the web page launch, and entering the first documentation entries which need to be pre-written.
+
+
+
+Tuesday March 17:
+Established new updates to brand design.
+Established 24 soundtrack list:
+
+Themes: 
+The Static Pole: Claustrophobia, suffocation, loneliness, hopelessness, mundainity, feeling trapped in stasis
+The Kinetic Pole: equilibrium, flow of time, technology, corporate authority, sense of the world movign fast around you
+
+How that maps to composition practically:
+
+Harmonic language: Sustained minor modal harmony with no resolution — 
+Dorian or Phrygian work well here. They have forward motion implied but 
+never deliver it. Phrygian specifically has a corporate coldness to it, 
+that flat second creates unease without being overtly dramatic.
+
+Rhythm: Two simultaneous layers moving at different rates. 
+A slow human pulse underneath — something felt around 40-50 BPM, 
+your static pole. A mechanical layer on top running at a faster 
+subdivision — your kinetic pole. The player lives in the gap between them. 
+This is what Vangelis did architecturally in Bladerunner.
+
+Melody: Sparse, incomplete phrases. A line that starts and doesn't finish, 
+or finishes somewhere unexpected. Loneliness and hopelessness live in phrases 
+that don't resolve where the ear expects. Never Forget works this way — the melody 
+implies a cadence that keeps deferring.
+
+Negative space: Your claustrophobia and suffocation themes are best served 
+paradoxically by removing sound rather than adding density. A dense 
+mix feels overwhelming but not claustrophobic. A sparse mix with one close, 
+dry sound — a breath, a mechanical click, a single piano note — and nothing 
+else creates the feeling of walls. The player can hear the room they're trapped in.
+
+Corporate authority: This one lives in timbre, not melody. Cold, 
+processed, synthetic textures that don't decay naturally. Everything 
+that represents the system should have an unnaturally long sustain or an 
+unnaturally fast cutoff — nothing organic. Underneath the human elements, 
+the corporate layer just runs. Constant. Indifferent.
+
+
+Your cue categories based on those themes:
+
+Exploration / mundane existence — the ODST street equivalent. 
+Slow felt tempo, incomplete melodic phrases, heavy negative space, 
+the mechanical underlayer present but quiet. This is where the 
+claustrophobia and flow of time live.
+
+Corporate spaces — cold synthetic beds, no melody, just texture 
+and that indifferent mechanical pulse. Authority expressed as 
+something that doesn't acknowledge the player.
+
+Moments of weight — loneliness and hopelessness peak here. 
+Single instrument, very dry, very close. The Minecraft model 
+applies — short, plays once, long silence after. The player feels 
+it precisely because it doesn't stay.
+
+Tension without combat — equilibrium disrupted but not broken. 
+The static and kinetic poles moving out of sync with each other. 
+Harmonic ambiguity increasing without resolving into action.
+
+The through-line connecting all of it is that nothing in your soundtrack 
+should feel like it was written for the player. It was already playing 
+before they arrived. That's the mundanity and the corporate authority 
+expressed musically — the world doesn't score itself around you.
+
+(Exploration) > nocturnes
+Lower Depths - Static Pole, claustrophobic, cramped, Phrgian Mode
+The Corridors - Static Pole, less cramped, but still has overbearing weight.
+Mega Hallway - Static and Kenetic Poles. Vast open space with reverb.
+Mid Levels - More ordered world, more corporate, colder, more synthetic.
+Approaching the Surface - Tension between hope and the weight of everything down bellow
+The Surface - The experience of living in a less weighted world.
+
+(Work and Economy) > Corporate authority has building passacaglias
+Lower Work - Mechanical, static pole, menial, feeling trapped.
+Mid Work - Slightly more melodic, has more cognitive weight. Cold.
+Surface Work - Consequencial jobs, more orchestral weight. Resolution of the ecenomic arc.
+Market/Economy Lower - Chaotic but contained. Question and answer melodies with transaction.
+Market/Economy Mid - The individual themes are smaller. More synthetic, less human.
+Corporate Authority
+
+(Combat) Tocattas and Fugues. Look at Bach's Toccata and Fugue in D minor.
+Lower Combat - Desperate survival, hopelessness
+Mid Combat - More calculated. More tactical.
+Surface Combat Consequences, high stake, most orchestral but filtered through player theme.
+Crime/Stealth Low - Tension without percussion. Static and kenetic poles barely moving. Maximum ambiguity.
+Crime/Stealth Mid - Higher stakes, more systems to move through.
+Pursuit - High stress, high action, mechanical underlayer, human pulse burried. Chased by the system.
+
+(Threshold and Arch) > preludes and postludes, firs time seeing the sky is an elegy.
+Spawn - Player theme.
+First Crossing (Lower to Mid) - Sifts from closterphobic to more open with the hints of corporation.
+First Mega Hallway - First encounter of the vast open spaces. The sense of awe and insignificance.
+First Crossing Middle to Upper - Goes from weighted themes to a more breathable theme and the tension builds as the player nears the surface.
+The Surface/First Sky - A climatic conclusion where the player finally escapes the depths.
+Equilibrium - Despite the conclusive climax, the player still lives in an ever continuous world with no end.
+
+Structures:
+Intro, exposition, development, recapitulation, climax, denouement, coda.
+
+Internal repeat structures:
+Verse, Chorus/Refrain (recuring central statements), Bridge, Tarnsition/Link, Strophe
+
+Forms:
+Binary(AB)
+Ternary(ABA)
+Rondo(ABACADA)
+Sonata(ABCDBCE)
+Through-composed(ABCDE...)
+
+
+Song Order: 
+01 — Spawn
+02 — Lower Depths
+03 — Lower Combat
+04 — Lower Work
+05 — The Corridors
+06 — Crime / Stealth Low
+07 — Market / Economy Low
+08 — Pursuit
+09 — First Crossing — Lower to Middle
+10 — Mid Levels
+11 — Corporate Authority
+12 — Mid Work
+13 — Crime / Stealth Mid
+14 — Market / Economy Mid
+15 — First Mega Hallway
+16 — Mid Combat
+17 — Mega Hallway
+18 — Surface Work Approach
+19 — Approaching Surface
+20 — First Crossing — Middle to Upper
+21 — The Surface / First Sky
+22 — Surface Work
+23 — Surface Combat
+24 — Equilibrium
+
+Song Titles:
+01 — Spawn: Overture
+02 — Lower Depths: Depths of Tartarus
+03 — Lower Combat: Tribulation
+04 — Lower Work: Working In Limbo
+05 — The Corridors: Sheol
+06 — Crime / Stealth Low: When You're Invisibility
+07 — Market / Economy Low: Penance
+08 — Pursuit: Deliverance
+
+09 — First Crossing — Lower to Middle: Exodus
+10 — Mid Levels: The Long Way Up
+11 — Corporate Authority: Leviathan
+12 — Mid Work: Purgatory Of The Mind
+13 — Crime / Stealth Mid: Angel of Death
+14 — Market / Economy Mid: Market of Mammon
+15 — First Mega Hallway: The Steel Glass Canyon
+16 — Mid Combat: Crossing the River of Styx
+
+17 — Mega Hallway: Valley of Blinding Lights
+18 — Surface Work Approach: Anastasia
+19 — Approaching Surface: The End is Nigh
+20 — First Crossing — Middle to Upper: Apotheosis
+21 — The Surface / First Sky: Breath Amongst the Stars
+22 — Surface Combat: Heresy of the Corporate Overlord
+23 — Surface Work: The Sun Won't Melt Our Chains Tonight
+24 — Equilibrium: Perdition Of The Revenant
+
+
+Quotes to leave in the game:
+Desperation is a tender path.
+Sometimes virtue can be the path to desruction.
+A necessary evil is still evil, however some good things can come from it.
+The world often rewards those who least deserve it.
+Sometimes the path of virtue requires a moment of surrender to retain one's self.
+The path of virtue isn't about reward nor recognition.
+Society would collaps if everything was ethical.
+Even when freed from your chains, you still have to navigate the consequences 
+
+
+
+
+
+
+Thursday March 19th:
+Completed Song 1 - Overture.
+
+
+
+Friday March 20thL
+Mostly completed Song 2 - Depths of Tartarus. One thing to note is it could be shortened by half for listening purposes. Song is designed to have 15 second loops that the game can manage so it sounsds seemless, however, for a music score, 8 minutes may be too long. 
+Mostly completed Song 15 - Steal Glass Canyon. Same issue as Song 2.
+
+
+
+
+Sunday March 21st:
+Tried to do more concept art. Need more inspiration
+Worked on Song 3 - Tribulation which is the in combat song for the lower levels.
+
+
+
+
+Tuesday March 23rd:
+Brand Design Guidelines. Researched and developed a more sophisticated brand design guidelines document.
+
+
+Thursday March 25th:
+Further work on Brand Design Guidelines.
+This includes Typography, Iconography, Color, and Shape Aesthetics
+
+
+Saturday March 27th:
+Further work on Brand Guidelines. Introduction of micrographics.
+
+
+
+Friday April 3rd:
+First integration of Road Map introduced. Will have further polishing in the future.
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git add .
+
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git commit -m "Roadmap Introduction"
+[main 33734e4] Roadmap Introduction
+ 2 files changed, 50 insertions(+), 10 deletions(-)
+ delete mode 100644 images/placeholder1.png
+
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.99 KiB | 1.99 MiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/taylorheine09/ecumenopolis.net.git
+   61635b9..33734e4  main -> main
+
+
