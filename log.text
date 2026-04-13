@@ -874,6 +874,7 @@ To https://github.com/taylorheine09/ecumenopolis.net.git
 Wednsday April 8th:
 Started Concept Art Painting number 2.
 
+
 Thursday April 9th:
 Worked on algorithm for city hub generation. Still working on the technical challenge of taking a 
 2 dimensional image generator and converting the same generation logic to be mapped to a 3D object.
@@ -881,3 +882,28 @@ Worked on algorithm for city hub generation. Still working on the technical chal
 
 Friday April 10th:
 Updated Web slogan and also added story to instagram post.
+
+C:\Godot\Ecumenopolis_Website\ecumenopolis.net>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 645 bytes | 645.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/taylorheine09/ecumenopolis.net.git
+   7bf4f76..b552b38  main -> main
+
+
+
+Saturday April 11th:
+Finalized generation of surface visuals of Quad planet. Generates textures to use in blender using Python. 
+Next step is to work on the seed generation for the faces.
+After that, step is to get working quad planet in Godot using C++ rather than python.
+
+
+
+Sunday April 12th:
+Worked more on concept art. Wrote strongest slogen yet. "One planet. One City. Your World."
+Further conceptual planning
+Soundtrack testing for intended audience.
