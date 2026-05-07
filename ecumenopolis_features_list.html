@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ecumenopolis — Features List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --col-bg:        #010129;
+    --col-surface:   #1b244d;
+    --col-dark-brey: #3a5056;
+    --col-pale-blue: #68919c;
+    --col-teal:      #81e7d4;
+    --col-burn-red:  #b5253f;
+    --col-hot-pink:  #eb446f;
+    --col-orange:    #f09234;
+    --col-yellow:    #f9d34a;
+    --col-peach:     #f5c289;
+    --col-off-white: #f0fff4;
+    --font-main: 'Roboto', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--col-bg);
+    color: var(--col-off-white);
+    font-family: var(--font-main);
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    height: 56px;
+    background: rgba(1, 1, 41, 0.92);
+    border-bottom: 1px solid rgba(129, 231, 212, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  .nav__logo-img {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 7rem 3rem 3rem;
+    border-bottom: 1px solid rgba(129, 231, 212, 0.15);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--col-teal), transparent);
+  }
+  .page-header__label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--col-teal);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+  .page-header__title {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--col-off-white);
+    text-shadow: 0 0 20px rgba(129, 231, 212, 0.3);
+    margin-bottom: 0.75rem;
+  }
+  .page-header__divider {
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--col-hot-pink), var(--col-burn-red));
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--col-teal);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    border: 1px solid rgba(129, 231, 212, 0.18);
+    position: relative;
+  }
+  .table-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--col-teal), transparent);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  thead tr {
+    background: var(--col-surface);
+    border-bottom: 1px solid rgba(129, 231, 212, 0.25);
+  }
+
+  thead th {
+    padding: 0.85rem 1.25rem;
+    text-align: left;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--col-teal);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(129, 231, 212, 0.08);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(129, 231, 212, 0.04); }
+
+  /* Complete rows dimmed */
+  tbody tr.complete {
+    opacity: 0.45;
+  }
+
+  td {
+    padding: 0.85rem 1.25rem;
+    vertical-align: middle;
+  }
+
+  .td-index {
+    color: rgba(129, 231, 212, 0.35);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    width: 48px;
+    white-space: nowrap;
+  }
+
+  .td-name {
+    color: var(--col-off-white);
+    letter-spacing: 0.06em;
+    font-size: 0.82rem;
+  }
+  .td-name.sub {
+    color: var(--col-pale-blue);
+    padding-left: 2.25rem;
+  }
+  .td-name.sub::before {
+    content: '↳';
+    margin-right: 0.5rem;
+    color: rgba(129, 231, 212, 0.4);
+  }
+
+  .td-desc {
+    color: var(--col-pale-blue);
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    max-width: 340px;
+    line-height: 1.5;
+  }
+
+  .td-status {
+    white-space: nowrap;
+    width: 160px;
+  }
+
+  .td-progress {
+    width: 90px;
+    font-size: 0.75rem;
+    color: var(--col-pale-blue);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* ── STATUS DOTS ── */
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--not-active { background: var(--col-yellow); box-shadow: 0 0 6px rgba(249,211,74,0.6); }
+  .dot--active     { background: #3ddc84; box-shadow: 0 0 6px rgba(61,220,132,0.6); }
+  .dot--complete   { background: #4a5568; }
+
+  .status--not-active { color: var(--col-yellow); }
+  .status--active     { color: #3ddc84; }
+  .status--complete   { color: #4a5568; }
+
+  /* ── CORNER ACCENTS ── */
+  .corner-box {
+    position: relative;
+  }
+  .corner-box::before,
+  .corner-box::after,
+  .corner-box .c3,
+  .corner-box .c4 {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--col-hot-pink);
+    border-style: solid;
+  }
+  .corner-box::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
+  .corner-box::after  { top: 0; right: 0; border-width: 2px 2px 0 0; }
+  .corner-box .c3     { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+  .corner-box .c4     { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+  /* ── SCAN LINE ── */
+  .scan-wrap {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .scan-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(129,231,212,0.12), transparent);
+    animation: scan 18s linear infinite;
+  }
+  @keyframes scan {
+    0%   { top: 0%; opacity: 1; }
+    49%  { opacity: 1; }
+    50%  { top: 100%; opacity: 0; }
+    51%  { top: 0%; opacity: 0; }
+    52%  { opacity: 1; }
+    100% { top: 100%; opacity: 1; }
+  }
+
+  /* ── PROGRESS BAR INLINE ── */
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .progress-bar {
+    width: 52px;
+    height: 3px;
+    background: rgba(129,231,212,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--col-hot-pink), var(--col-burn-red));
+    border-radius: 2px;
+  }
+  .progress-tbd {
+    color: rgba(104, 145, 156, 0.6);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+  }
+</style>
+</head>
+<body>
+
+<div class="scan-wrap"><div class="scan-line"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav__logo" href="#">
+    <svg class="nav__logo-img" viewBox="0 0 2492 373" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:22px;width:auto;">
+      <path d="M382.676 249.041L394.718 261.041H426V265.041H393.064L381.023 253.041H279V249.041H382.676Z" fill="#F0FFF4"/><path d="M1715.72 326.041L1724.22 333.041H1751V337.041H1722.78L1714.28 330.041H1682V326.041H1715.72Z" fill="#F0FFF4"/><path d="M58 180.041L0 180.043L90 296.041H149L58 180.041Z" fill="#F0FFF4"/><path d="M576 38.0412H859L877 61.0412H568L576 38.0412Z" fill="#F0FFF4"/><path d="M447.001 0.0412102H2079L2074 23.0412H427L447.001 0.0412102Z" fill="#F0FFF4"/><path d="M175 321.041H1092L1110 345.041H154L175 321.041Z" fill="#F0FFF4"/><path d="M1125 321.041H1627L1622 345.041H1143L1125 321.041Z" fill="#F0FFF4"/><path d="M217 273.041H426V296.041H197L217 273.041Z" fill="#F0FFF4"/><path d="M1099 273.041H1570.5L1565.5 296.041H1079L1099 273.041Z" fill="#F0FFF4"/><path d="M1922.5 273.041H2424.5L2419.5 296.041H1937L1922.5 273.041Z" fill="#F0FFF4"/><path d="M1728.5 269.541L1804 270.041L1799 292.041H1724L1728.5 269.541Z" fill="#F0FFF4"/><path d="M2249.5 0.0412102H2485L2480 23.0412H2245L2249.5 0.0412102Z" fill="#F0FFF4"/><path d="M1827.5 270.041L1897 270.575L1912 294.041L1823 292.541L1827.5 270.041Z" fill="#F0FFF4"/><path d="M356 60.0412H201L249 0.0056165L409 0L356 60.0412Z" fill="#F0FFF4"/><path d="M495.864 263.541L443.864 263.539V296.539H526.861L495.864 263.541Z" fill="#F0FFF4"/><path d="M561 84.0412H600L570.5 180.403L605.41 219.672H653.414L683.143 84.0412H725.414L688.658 252.041H580.432L526 187.321L561 84.0412Z" fill="#F0FFF4"/><path d="M1372.5 252.041H1330L1350 148.761L1322 116.41L1265 116.41L1235.27 252.041H1193L1229.76 84.0412H1340L1392.41 148.761L1372.5 252.041Z" fill="#F0FFF4"/><path d="M945.993 253.458L904.007 253.441L923.634 156.941L890.634 116.941L858 255.041H823L844.001 156.441L814.759 115.107L799.407 115.107L769.001 253.963L726 254.04L764.001 83.9772L834.993 83.9772L856.501 115.688L862.993 83.9628L904.007 84.4577L963.994 156.941L945.993 253.458Z" fill="#F0FFF4"/><path d="M1419 187.96L1438 84.0412L1610 84.0412L1574 252.041L1459 252.041L1419 187.96ZM1561.83 115.358L1473.72 115.358L1472.54 120.828L1459.12 181.993L1483.5 220.778H1539.37L1561.83 115.358Z" fill="#F0FFF4"/><path d="M1870 187.96L1889 84.0412L2061 84.0412L2024.86 252.455L1910.12 252.455L1870 187.96ZM2012.83 115.358L1924.72 115.358L1923.54 120.828L1910.12 181.993L1934.5 220.778H1990.37L2012.83 115.358Z" fill="#F0FFF4"/><path d="M2267.91 115.541L2238.79 252.041H2196L2225.91 115.541H2267.91Z" fill="#F0FFF4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2241 43.0412H2282.29L2274.94 83.5393H2232.94L2241 43.0412Z" fill="#F0FFF4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2171 0.0412102L2124.8 212.041H2163.17L2154 252.041H2074L2130 0.0412102H2171Z" fill="#F0FFF4"/><path d="M2318.51 85.0412H2466.51L2459.01 120.041H2352.01L2348.01 143.541H2453.51L2430.01 252.041L2408.51 252.541L2281 252.041L2289 219.041H2395L2403 178.041L2299 176.041L2318.51 85.0412Z" fill="#F0FFF4"/><path d="M129 116.041H0L64.3281 34.0412H120.016L126 30.0412H67.4658L72.957 23.0412H132.016L138 19.0412H76.0947L81.5859 12.0412H145.016L151 8.04121H84.7246L91 0.0412102H220L129 116.041Z" fill="#F0FFF4"/>
+    </svg>
+  </a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header__label">// ECUMENOPOLIS — INTERNAL</div>
+  <div class="page-header__title">Features List</div>
+  <div class="page-header__divider"></div>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- ── PRODUCTION & DESIGN ── -->
+  <section>
+    <div class="section-label">// 01 — Production &amp; Design</div>
+    <div class="table-wrap corner-box">
+      <span class="c3"></span><span class="c4"></span>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="td-index">001</td>
+            <td class="td-name">Competitive Analysis</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">002</td>
+            <td class="td-name">Game Pitch</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">003</td>
+            <td class="td-name">Brand Design Guide</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">004</td>
+            <td class="td-name">Game Design Bible</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">005</td>
+            <td class="td-name">Concept Art</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">006</td>
+            <td class="td-name">Project Management</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">007</td>
+            <td class="td-name">Business Proposal</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">008</td>
+            <td class="td-name">Social Media Marketing Plan</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">009</td>
+            <td class="td-name">Story Outline</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">010</td>
+            <td class="td-name">Sound Track</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--active">
+                <span class="dot dot--active"></span> Active
+              </div>
+            </td>
+            <td class="td-progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:15%"></div></div>
+                15%
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── MODULAR SYSTEMS ── -->
+  <section>
+    <div class="section-label">// 02 — Modular Systems Prototypes</div>
+    <div class="table-wrap corner-box">
+      <span class="c3"></span><span class="c4"></span>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="td-index">M-001</td>
+            <td class="td-name">Stock Market</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--active">
+                <span class="dot dot--active"></span> Active
+              </div>
+            </td>
+            <td class="td-progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:80%"></div></div>
+                80%
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-002</td>
+            <td class="td-name">Crypto Currencies</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--active">
+                <span class="dot dot--active"></span> Active
+              </div>
+            </td>
+            <td class="td-progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:95%"></div></div>
+                95%
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-003</td>
+            <td class="td-name">Banking System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-004</td>
+            <td class="td-name">Usable Item List</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-005</td>
+            <td class="td-name">Inventory</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-006</td>
+            <td class="td-name">Looting System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-007</td>
+            <td class="td-name">Merchant System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-008</td>
+            <td class="td-name">Healthcare System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-009</td>
+            <td class="td-name">Survival System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-010</td>
+            <td class="td-name">Internet Web Simulation</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-011</td>
+            <td class="td-name">Job Minigame List</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">M-012</td>
+            <td class="td-name">Building Types List</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── WORLD & TECH ── -->
+  <section>
+    <div class="section-label">// 03 — World &amp; Technical Systems</div>
+    <div class="table-wrap corner-box">
+      <span class="c3"></span><span class="c4"></span>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="td-index">W-001</td>
+            <td class="td-name">Quad Sphere</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">W-002</td>
+            <td class="td-name">Procedural City Layout</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">W-003</td>
+            <td class="td-name">Procedural Buildings</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">W-004</td>
+            <td class="td-name">Building Functionality</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">W-005</td>
+            <td class="td-name">Day / Night Cycle</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">W-006</td>
+            <td class="td-name">Apartment System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── NPC & AI ── -->
+  <section>
+    <div class="section-label">// 04 — NPC &amp; AI Systems</div>
+    <div class="table-wrap corner-box">
+      <span class="c3"></span><span class="c4"></span>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="td-index">N-001</td>
+            <td class="td-name">Procedural NPCs</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-002</td>
+            <td class="td-name">Procedural Pathfinding</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-003</td>
+            <td class="td-name">Procedural Dialogue</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-003a</td>
+            <td class="td-name sub">Delivery Quests</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-003b</td>
+            <td class="td-name sub">Bounty Hunting</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-003c</td>
+            <td class="td-name sub">Merchant NPCs</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">N-003d</td>
+            <td class="td-name sub">Background NPCs</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── COMBAT & SOCIAL ── -->
+  <section>
+    <div class="section-label">// 05 — Combat &amp; Social Systems</div>
+    <div class="table-wrap corner-box">
+      <span class="c3"></span><span class="c4"></span>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="td-index">C-001</td>
+            <td class="td-name">Combat System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">C-002</td>
+            <td class="td-name">Combat AI Simulations</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">C-003</td>
+            <td class="td-name">Crime / Reputation System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+          <tr>
+            <td class="td-index">C-004</td>
+            <td class="td-name">Police System</td>
+            <td class="td-desc"></td>
+            <td class="td-status">
+              <div class="status status--not-active">
+                <span class="dot dot--not-active"></span> Not Active
+              </div>
+            </td>
+            <td class="td-progress"><span class="progress-tbd">TBD</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
